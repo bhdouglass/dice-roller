@@ -25,9 +25,6 @@ MainView {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: units.gu (1)
                 flow: Flow.TopToBottom
-                move: Transition {
-                    NumberAnimation { properties: "x,y"; easing.type: Easing.InOutBounce; duration: 500 }
-                }
                 Die {
                     id: die0
                 }
