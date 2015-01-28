@@ -18,12 +18,22 @@ MainView {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: units.gu (2)
+            Behavior on rotation {
+                NumberAnimation {
+                    easing.type: Easing.InOutQuint
+                    duration: 1000
+                }
+            }
         }
         Button {
             text: "Roll"
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: units.gu (2)
+            anchors.right: parent.right
+            anchors.rightMargin: units.gu (2)
             anchors.bottom: parent.bottom
             anchors.bottomMargin: units.gu (2)
+            onClicked: die.rotation += 360 * 10
         }
     }
 }
