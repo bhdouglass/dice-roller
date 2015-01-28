@@ -34,8 +34,8 @@ MainView {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: units.gu (2)
             onClicked: {
-                die0.rotation += 360 * 10
-                die1.rotation -= 360 * 10
+                die0.roll ()
+                die1.roll ()
             }
         }
     }
