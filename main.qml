@@ -11,5 +11,19 @@ MainView {
     height: units.gu (71)
 
     Page {
+        Rectangle {
+            id: die
+            width: units.gu (10)
+            height: width
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: units.gu (2)
+        }
+        Button {
+            text: "Roll"
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: units.gu (2)
+        }
     }
 }
