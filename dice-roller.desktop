@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Dice Roller
+Exec=qmlscene $@ main.qml
+Icon=dice-roller.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true

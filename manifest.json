@@ -1,0 +1,15 @@
+{
+    "architecture": "all",
+    "description": "Roll dice",
+    "framework": "ubuntu-sdk-14.10-dev2",
+    "hooks": {
+        "dice-roller": {
+            "apparmor": "dice-roller.apparmor",
+            "desktop": "dice-roller.desktop"
+        }
+    },
+    "maintainer": "Robert Ancell <robert.ancell@canonical.com>",
+    "name": "com.ubuntu.developer.robert-ancell.dice-roller",
+    "title": "Dice Roller",
+    "version": "1"
+}
