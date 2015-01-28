@@ -12,11 +12,18 @@ MainView {
 
     Page {
         Die {
-            id: die
+            id: die0
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: units.gu (2)
             text: "1"
+        }
+        Die {
+            id: die1
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: die0.bottom
+            anchors.topMargin: units.gu (2)
+            text: "6"
         }
         Button {
             text: "Roll"
@@ -26,7 +33,10 @@ MainView {
             anchors.rightMargin: units.gu (2)
             anchors.bottom: parent.bottom
             anchors.bottomMargin: units.gu (2)
-            onClicked: die.rotation += 360 * 10
+            onClicked: {
+                die0.rotation += 360 * 10
+                die1.rotation -= 360 * 10
+            }
         }
     }
 }
