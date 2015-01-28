@@ -5,6 +5,8 @@ Rectangle {
     id: die
     width: units.gu (10)
     height: width
+    radius: width * 0.1
+    border.color: "grey"
     Behavior on rotation {
         NumberAnimation {
             easing.type: Easing.InOutQuint
