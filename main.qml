@@ -11,21 +11,28 @@ MainView {
     height: units.gu (71)
 
     Page {
+        property var total: "Total: " + (die0.text + die1.text)
         Die {
             id: die0
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: units.gu (2)
-            text: "1"
         }
         Die {
             id: die1
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: die0.bottom
             anchors.topMargin: units.gu (2)
-            text: "6"
+        }
+        Label {
+            id: total_label
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: roll_button.top
+            anchors.bottomMargin: units.gu (2)
+            text: parent.total
         }
         Button {
+            id: roll_button
             text: "Roll"
             anchors.left: parent.left
             anchors.leftMargin: units.gu (2)

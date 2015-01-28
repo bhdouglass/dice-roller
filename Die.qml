@@ -16,7 +16,7 @@ Rectangle {
     Timer {
         id: change_timer
         interval: 500
-        onTriggered: text = new_text
+        onTriggered: text = value
     }
     Label {
         id: label
@@ -30,13 +30,16 @@ Rectangle {
         color: "black"
     }
     property var text
-    property var new_text
+    property var value
     function roll () {
-        new_text = Math.floor (Math.random () * 6) + 1
+        value = Math.floor (Math.random () * 6) + 1
         change_timer.start ()
         rotation += random_direction () * 360 * 10
     }
     function random_direction () {
         return Math.random () >= 0.5 ? 1 : -1
+    }
+    Component.onCompleted: {
+        text = value = Math.floor (Math.random () * 6) + 1
     }
 }
