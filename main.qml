@@ -11,19 +11,12 @@ MainView {
     height: units.gu (71)
 
     Page {
-        Rectangle {
+        Die {
             id: die
-            width: units.gu (10)
-            height: width
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: units.gu (2)
-            Behavior on rotation {
-                NumberAnimation {
-                    easing.type: Easing.InOutQuint
-                    duration: 1000
-                }
-            }
+            text: "1"
         }
         Button {
             text: "Roll"
