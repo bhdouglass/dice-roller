@@ -72,6 +72,10 @@ MainView {
         }
         function remove_die ()
         {
+            if (dice.length < 2)
+                return
+            dice[dice.length - 1].destroy ()
+            dice.length--
         }
         function roll ()
         {
