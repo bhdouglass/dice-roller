@@ -4,7 +4,6 @@ import Ubuntu.Components 1.1
 
 MainView {
     objectName: "mainView"
-    id: game_view
     applicationName: "com.ubuntu.developer.robert-ancell.dice-roller"
     useDeprecatedToolbar: false
 
@@ -12,7 +11,8 @@ MainView {
     height: units.gu (71)
 
     Page {
-        property var total: "Total: " + (die0.text + die1.text)
+        id: main_page
+        property var total: "Total: " + 0
         Item {
             anchors.top: parent.top
             anchors.left: parent.left
@@ -25,12 +25,6 @@ MainView {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: units.gu (1)
                 flow: Flow.TopToBottom
-                Die {
-                    id: die0
-                }
-                Die {
-                    id: die1
-                }
             }
         }
         Label {
@@ -47,13 +41,11 @@ MainView {
             anchors.bottomMargin: units.gu (2)
             Button {
                 text: "-"
+                onClicked: main_page.remove_die ()
             }
             Button {
                 text: "+"
-                onClicked: {
-                    var die_component = Qt.createComponent ("Die.qml")
-                    die_component.createObject (die_grid)
-                }
+                onClicked: main_page.add_die ()
             }
         }
         Button {
@@ -65,10 +57,26 @@ MainView {
             anchors.rightMargin: units.gu (2)
             anchors.bottom: parent.bottom
             anchors.bottomMargin: units.gu (2)
-            onClicked: {
-                die0.roll ()
-                die1.roll ()
-            }
+            onClicked: main_page.roll ()
+        }
+        Component.onCompleted: {
+            add_die ()
+            add_die ()
+        }
+        property var dice: []
+        function add_die ()
+        {
+            var die_component = Qt.createComponent ("Die.qml")
+            var die = die_component.createObject (die_grid)
+            dice[dice.length] = die
+        }
+        function remove_die ()
+        {
+        }
+        function roll ()
+        {
+            for (var i = 0; i < dice.length; i++)
+                dice[i].roll ()
         }
     }
 }
