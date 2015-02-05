@@ -12,7 +12,6 @@ MainView {
 
     Page {
         id: main_page
-        property var total: "Total: " + 0
         Item {
             anchors.top: parent.top
             anchors.left: parent.left
@@ -32,7 +31,6 @@ MainView {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: buttons_layout.top
             anchors.bottomMargin: units.gu (2)
-            text: parent.total
         }
         RowLayout {
             id: buttons_layout
@@ -68,7 +66,9 @@ MainView {
         {
             var die_component = Qt.createComponent ("Die.qml")
             var die = die_component.createObject (die_grid)
+            die.onChanged.connect (update_total)
             dice[dice.length] = die
+            update_total ()
         }
         function remove_die ()
         {
@@ -76,11 +76,19 @@ MainView {
                 return
             dice[dice.length - 1].destroy ()
             dice.length--
+            update_total ()
         }
         function roll ()
         {
             for (var i = 0; i < dice.length; i++)
                 dice[i].roll ()
+        }
+        function update_total ()
+        {
+            var t = 0
+            for (var i = 0; i < dice.length; i++)
+                t += dice[i].text
+            total_label.text = "Total: " + t
         }
     }
 }

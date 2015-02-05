@@ -16,7 +16,10 @@ Rectangle {
     Timer {
         id: change_timer
         interval: 500
-        onTriggered: text = value
+        onTriggered: {
+            text = value
+            die.changed ()
+        }
     }
     Label {
         id: label
@@ -31,6 +34,8 @@ Rectangle {
     }
     property var text
     property var value
+    signal changed ()
+    signal rolled ()
     function roll () {
         value = Math.floor (Math.random () * 6) + 1
         change_timer.start ()
