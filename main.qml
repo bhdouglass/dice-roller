@@ -70,7 +70,7 @@ MainView {
             die.onChanged.connect (update_total)
             die.onRolled.connect (update_rolling)
             dice[dice.length] = die
-            remove_button.enabled = dice.length > 1
+            update_remove_button_enabled ()
             update_total ()
         }
         function remove_die ()
@@ -79,7 +79,7 @@ MainView {
                 return
             dice[dice.length - 1].destroy ()
             dice.length--
-            remove_button.enabled = dice.length > 1
+            update_remove_button_enabled ()
             update_total ()
         }
         function roll ()
@@ -87,6 +87,10 @@ MainView {
             for (var i = 0; i < dice.length; i++)
                 dice[i].roll ()
             update_rolling ()
+        }
+        function update_remove_button_enabled ()
+        {
+            remove_button.enabled = dice.length > 1
         }
         function update_total ()
         {
