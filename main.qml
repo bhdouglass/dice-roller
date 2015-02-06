@@ -100,7 +100,7 @@ MainView {
             }
             var t = 0
             for (var i = 0; i < dice.length; i++)
-                t += dice[i].text
+                t += dice[i].value
             total_label.text = "Total: " + t
         }
         function update_rolling () {

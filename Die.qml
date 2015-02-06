@@ -7,6 +7,77 @@ Rectangle {
     border.color: "grey"
     border.width: held ? 4 : 1
     property bool animation_enabled: false
+    property var dot_size: width / 7
+    Rectangle {
+        id: dot_nw
+        visible: false
+        x: dot_size
+        y: dot_size
+        width: dot_size
+        height: dot_size
+        radius: width * 0.5
+        color: "black"
+    }
+    Rectangle {
+        id: dot_w
+        visible: false
+        x: dot_size
+        y: dot_size * 3
+        width: dot_size
+        height: dot_size
+        radius: width * 0.5
+        color: "black"
+    }
+    Rectangle {
+        id: dot_sw
+        visible: false
+        x: dot_size
+        y: dot_size * 5
+        width: dot_size
+        height: dot_size
+        radius: width * 0.5
+        color: "black"
+    } 
+    Rectangle {
+        id: dot_middle
+        visible: false
+        x: dot_size * 3
+        y: dot_size * 3
+        width: dot_size
+        height: dot_size
+        radius: width * 0.5
+        color: "black"
+    }
+    Rectangle {
+        id: dot_ne
+        visible: false
+        x: dot_size * 5
+        y: dot_size
+        width: dot_size
+        height: dot_size
+        radius: width * 0.5
+        color: "black"
+    }
+    Rectangle {
+        id: dot_e
+        visible: false
+        x: dot_size * 5
+        y: dot_size * 3
+        width: dot_size
+        height: dot_size
+        radius: width * 0.5
+        color: "black"
+    }
+    Rectangle {
+        id: dot_se
+        visible: false
+        x: dot_size * 5
+        y: dot_size * 5
+        width: dot_size
+        height: dot_size
+        radius: width * 0.5
+        color: "black"
+    }
     Behavior on rotation {
         NumberAnimation {
             id: animation
@@ -44,7 +115,8 @@ Rectangle {
         id: change_timer
         interval: 500
         onTriggered: {
-            text = value
+            value = new_value
+            update_face ()
             die.changed ()
         }
     }
@@ -52,7 +124,6 @@ Rectangle {
         id: label
         anchors.fill: parent
         anchors.margins: units.gu (1)
-        text: parent.text
         font.pixelSize: height
         font.bold: true
         verticalAlignment: Text.AlignVCenter
@@ -63,15 +134,15 @@ Rectangle {
         anchors.fill: parent
         onPressed: held = !held
     }
-    property var text
     property var value
+    property var new_value
     property var held: false
     signal changed ()
     signal rolled ()
     function roll () {
         if (held)
             return
-        value = Math.floor (Math.random () * 6) + 1
+        new_value = Math.floor (Math.random () * 6) + 1
         change_timer.start ()
         rotation += random_direction () * 360 * 10
     }
@@ -88,7 +159,69 @@ Rectangle {
     function random_direction () {
         return Math.random () >= 0.5 ? 1 : -1
     }
+    function update_face () {
+        var dots = []
+        switch (value)
+        {
+        case 1:
+            dot_nw.visible = false
+            dot_w.visible = false
+            dot_sw.visible = false
+            dot_middle.visible = true
+            dot_ne.visible = false
+            dot_e.visible = false
+            dot_se.visible = false
+            break;
+        case 2:
+            dot_nw.visible = false
+            dot_w.visible = false
+            dot_sw.visible = true
+            dot_middle.visible = false
+            dot_ne.visible = true
+            dot_e.visible = false
+            dot_se.visible = false
+            break;
+        case 3:
+            dot_nw.visible = false
+            dot_w.visible = false
+            dot_sw.visible = true
+            dot_middle.visible = true
+            dot_ne.visible = true
+            dot_e.visible = false
+            dot_se.visible = false
+            break;
+        case 4:
+            dot_nw.visible = true
+            dot_w.visible = false
+            dot_sw.visible = true
+            dot_middle.visible = false
+            dot_ne.visible = true
+            dot_e.visible = false
+            dot_se.visible = true
+            break;
+        case 5:
+            dot_nw.visible = true
+            dot_w.visible = false
+            dot_sw.visible = true
+            dot_middle.visible = true
+            dot_ne.visible = true
+            dot_e.visible = false
+            dot_se.visible = true
+            break;
+        case 6:
+            dot_nw.visible = true
+            dot_w.visible = true
+            dot_sw.visible = true
+            dot_middle.visible = false
+            dot_ne.visible = true
+            dot_e.visible = true
+            dot_se.visible = true
+            break;
+        }
+        
+    }
     Component.onCompleted: {
-        text = value = Math.floor (Math.random () * 6) + 1
+        value = Math.floor (Math.random () * 6) + 1
+        update_face ()
     }
 }
