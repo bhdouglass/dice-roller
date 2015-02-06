@@ -38,7 +38,9 @@ MainView {
             anchors.bottom: roll_button.top
             anchors.bottomMargin: units.gu (2)
             Button {
+                id: remove_button
                 text: "-"
+                enabled: false
                 onClicked: main_page.remove_die ()
             }
             Button {
@@ -59,7 +61,6 @@ MainView {
         }
         Component.onCompleted: {
             add_die ()
-            add_die ()
         }
         property var dice: []
         function add_die ()
@@ -69,6 +70,7 @@ MainView {
             die.onChanged.connect (update_total)
             die.onRolled.connect (update_rolling)
             dice[dice.length] = die
+            remove_button.enabled = dice.length > 1
             update_total ()
         }
         function remove_die ()
@@ -77,6 +79,7 @@ MainView {
                 return
             dice[dice.length - 1].destroy ()
             dice.length--
+            remove_button.enabled = dice.length > 1
             update_total ()
         }
         function roll ()
