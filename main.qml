@@ -13,18 +13,14 @@ MainView {
     Page {
         id: main_page
         Item {
+            id: table
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: total_label.top
             anchors.margins: units.gu (2)
-            Flow {
-                id: die_grid
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                spacing: units.gu (1)
-                flow: Flow.TopToBottom
-            }
+            onWidthChanged: main_page.layout ()
+            onHeightChanged: main_page.layout ()
         }
         Label {
             id: total_label
@@ -63,14 +59,20 @@ MainView {
             add_die ()
         }
         property var dice: []
+        property var die_size: units.gu (10)
+        property var die_spacing: units.gu (1)
         function add_die () {
             var die_component = Qt.createComponent ("Die.qml")
-            var die = die_component.createObject (die_grid)
+            var die = die_component.createObject (table)
+            die.width = die_size
+            die.height = die_size
             die.onChanged.connect (update_total)
             die.onRolled.connect (update_rolling)
             dice[dice.length] = die
             update_remove_button_enabled ()
             update_total ()
+            layout ()
+            die.animation_enabled = true
         }
         function remove_die () {
             if (dice.length < 2)
@@ -79,6 +81,7 @@ MainView {
             dice.length--
             update_remove_button_enabled ()
             update_total ()
+            layout ()
         }
         function roll () {
             for (var i = 0; i < dice.length; i++)
@@ -104,6 +107,39 @@ MainView {
                 if (dice[i].is_rolling ())
                     rolling = true
             roll_button.enabled = !rolling
+        }
+        function layout () {
+            if (dice.length == 0)
+                return
+
+            // Layout in grid that matches the allocated area
+            var n_cols
+            var n_rows
+            var aspect = table.width / table.height
+            var best_error
+            for (var r = 1; r <= dice.length; r++) {
+                var c = Math.ceil (dice.length / r)
+                var a = c / r
+                var e = Math.abs (aspect - a)
+                if (best_error == undefined || e < best_error) {
+                    n_cols = c
+                    n_rows = r
+                    best_error = e
+                }
+            }
+
+            // Move to this location
+            var grid_width = n_cols * die_size + (n_cols - 1) * die_spacing
+            var grid_height = n_rows * die_size + (n_rows - 1) * die_spacing
+            var x_offset = (table.width - grid_width) * 0.5
+            var y_offset = (table.height - grid_height) * 0.5
+            var die_step = die_size + die_spacing
+            for (var i = 0; i < dice.length; i++) {
+                var col = i % n_cols
+                var row = Math.floor (i / n_cols)
+                dice[i].x = x_offset + col * die_step
+                dice[i].y = y_offset + row * die_step
+            }
         }
     }
 }

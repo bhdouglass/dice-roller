@@ -3,11 +3,10 @@ import Ubuntu.Components 1.1
 
 Rectangle {
     id: die
-    width: units.gu (10)
-    height: width
     radius: width * 0.1
     border.color: "grey"
     border.width: held ? 4 : 1
+    property bool animation_enabled: false
     Behavior on rotation {
         NumberAnimation {
             id: animation
@@ -17,6 +16,20 @@ Rectangle {
                 if (!running)
                     die.rolled ()
             }
+        }
+    }
+    Behavior on x {
+        enabled: animation_enabled
+        NumberAnimation {
+            easing: UbuntuAnimation.StandardEasing
+            duration: UbuntuAnimation.FastDuration
+        }
+    }
+    Behavior on y {
+        enabled: animation_enabled
+        NumberAnimation {
+            easing: UbuntuAnimation.StandardEasing
+            duration: UbuntuAnimation.FastDuration
         }
     }
     Timer {
