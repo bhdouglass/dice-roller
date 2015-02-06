@@ -90,6 +90,10 @@ MainView {
         }
         function update_total ()
         {
+            if (dice.length < 2) {
+                total_label.text = ""
+                return
+            }
             var t = 0
             for (var i = 0; i < dice.length; i++)
                 t += dice[i].text
