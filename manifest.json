@@ -8,7 +8,7 @@
             "desktop": "dice-roller.desktop"
         }
     },
-    "maintainer": "Robert Ancell <robert.ancell@canonical.com>",
+    "maintainer": "Robert Ancell <robert.ancell@gmail.com>",
     "name": "com.ubuntu.developer.robert-ancell.dice-roller",
     "title": "Dice Roller",
     "version": "1"
