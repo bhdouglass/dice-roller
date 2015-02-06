@@ -18,5 +18,5 @@ check:
 	qmltestrunner -input tests/unit
 
 run:
-	/usr/bin/qmlscene $@ dice-roller.qml
+	/usr/bin/qmlscene $@ main.qml
 
