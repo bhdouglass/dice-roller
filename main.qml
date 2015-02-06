@@ -66,6 +66,7 @@ MainView {
             var die = die_component.createObject (table)
             die.width = die_size
             die.height = die_size
+            die.opacity = 0
             die.onChanged.connect (update_total)
             die.onRolled.connect (update_rolling)
             dice[dice.length] = die
@@ -73,11 +74,12 @@ MainView {
             update_total ()
             layout ()
             die.animation_enabled = true
+            die.opacity = 1
         }
         function remove_die () {
             if (dice.length < 2)
                 return
-            dice[dice.length - 1].destroy ()
+            dice[dice.length - 1].discard ()
             dice.length--
             update_remove_button_enabled ()
             update_total ()

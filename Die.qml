@@ -32,6 +32,14 @@ Rectangle {
             duration: UbuntuAnimation.FastDuration
         }
     }
+    Behavior on opacity {
+        enabled: animation_enabled
+        NumberAnimation {
+            id: opacity_animation
+            easing: UbuntuAnimation.StandardEasing
+            duration: UbuntuAnimation.FastDuration
+        }
+    }
     Timer {
         id: change_timer
         interval: 500
@@ -66,6 +74,13 @@ Rectangle {
         value = Math.floor (Math.random () * 6) + 1
         change_timer.start ()
         rotation += random_direction () * 360 * 10
+    }
+    function discard () {
+        opacity_animation.onRunningChanged.connect (function () {
+            if (!opacity_animation.running)
+                die.destroy ()
+        })
+        opacity = 0
     }
     function is_rolling () {
         return animation.running
