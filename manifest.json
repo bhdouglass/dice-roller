@@ -1,6 +1,6 @@
 {
     "architecture": "all",
-    "description": "Roll dice",
+    "description": "Simulate rolling dice",
     "framework": "ubuntu-sdk-14.10",
     "hooks": {
         "dice-roller": {
