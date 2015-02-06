@@ -7,6 +7,7 @@ Rectangle {
     height: width
     radius: width * 0.1
     border.color: "grey"
+    border.width: held ? 4 : 1
     Behavior on rotation {
         NumberAnimation {
             id: animation
@@ -37,11 +38,18 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         color: "black"
     }
+    MouseArea {
+        anchors.fill: parent
+        onPressed: held = !held
+    }
     property var text
     property var value
+    property var held: false
     signal changed ()
     signal rolled ()
     function roll () {
+        if (held)
+            return
         value = Math.floor (Math.random () * 6) + 1
         change_timer.start ()
         rotation += random_direction () * 360 * 10
