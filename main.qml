@@ -63,8 +63,7 @@ MainView {
             add_die ()
         }
         property var dice: []
-        function add_die ()
-        {
+        function add_die () {
             var die_component = Qt.createComponent ("Die.qml")
             var die = die_component.createObject (die_grid)
             die.onChanged.connect (update_total)
@@ -73,8 +72,7 @@ MainView {
             update_remove_button_enabled ()
             update_total ()
         }
-        function remove_die ()
-        {
+        function remove_die () {
             if (dice.length < 2)
                 return
             dice[dice.length - 1].destroy ()
@@ -82,18 +80,15 @@ MainView {
             update_remove_button_enabled ()
             update_total ()
         }
-        function roll ()
-        {
+        function roll () {
             for (var i = 0; i < dice.length; i++)
                 dice[i].roll ()
             update_rolling ()
         }
-        function update_remove_button_enabled ()
-        {
+        function update_remove_button_enabled () {
             remove_button.enabled = dice.length > 1
         }
-        function update_total ()
-        {
+        function update_total () {
             if (dice.length < 2) {
                 total_label.text = ""
                 return
@@ -103,8 +98,7 @@ MainView {
                 t += dice[i].text
             total_label.text = "Total: " + t
         }
-        function update_rolling ()
-        {
+        function update_rolling () {
             var rolling = false
             for (var i = 0; i < dice.length; i++)
                 if (dice[i].is_rolling ())

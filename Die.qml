@@ -46,8 +46,7 @@ Rectangle {
         change_timer.start ()
         rotation += random_direction () * 360 * 10
     }
-    function is_rolling ()
-    {
+    function is_rolling () {
         return animation.running
     }
     function random_direction () {
