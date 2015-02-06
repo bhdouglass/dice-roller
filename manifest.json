@@ -1,7 +1,7 @@
 {
     "architecture": "all",
     "description": "Roll dice",
-    "framework": "ubuntu-sdk-14.10-dev2",
+    "framework": "ubuntu-sdk-14.10",
     "hooks": {
         "dice-roller": {
             "apparmor": "dice-roller.apparmor",
