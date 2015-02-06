@@ -67,6 +67,7 @@ MainView {
             var die_component = Qt.createComponent ("Die.qml")
             var die = die_component.createObject (die_grid)
             die.onChanged.connect (update_total)
+            die.onRolled.connect (update_rolling)
             dice[dice.length] = die
             update_total ()
         }
@@ -82,6 +83,7 @@ MainView {
         {
             for (var i = 0; i < dice.length; i++)
                 dice[i].roll ()
+            update_rolling ()
         }
         function update_total ()
         {
@@ -89,6 +91,14 @@ MainView {
             for (var i = 0; i < dice.length; i++)
                 t += dice[i].text
             total_label.text = "Total: " + t
+        }
+        function update_rolling ()
+        {
+            var rolling = false
+            for (var i = 0; i < dice.length; i++)
+                if (dice[i].is_rolling ())
+                    rolling = true
+            roll_button.enabled = !rolling
         }
     }
 }

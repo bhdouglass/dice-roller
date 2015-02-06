@@ -9,8 +9,13 @@ Rectangle {
     border.color: "grey"
     Behavior on rotation {
         NumberAnimation {
+            id: animation
             easing.type: Easing.InOutQuint
             duration: 1000
+            onRunningChanged: {
+                if (!running)
+                    die.rolled ()
+            }
         }
     }
     Timer {
@@ -40,6 +45,10 @@ Rectangle {
         value = Math.floor (Math.random () * 6) + 1
         change_timer.start ()
         rotation += random_direction () * 360 * 10
+    }
+    function is_rolling ()
+    {
+        return animation.running
     }
     function random_direction () {
         return Math.random () >= 0.5 ? 1 : -1
