@@ -139,7 +139,7 @@ MainView {
                 var c = Math.ceil (dice.length / r)
                 var a = c / r
                 var e = Math.abs (aspect - a)
-                if (best_error == undefined || e < best_error) {
+                if (best_error == undefined || (e < best_error && (c + r) <= (n_rows + n_cols))) {
                     n_cols = c
                     n_rows = r
                     best_error = e
@@ -153,8 +153,8 @@ MainView {
             var y_offset = (table.height - grid_height) * 0.5
             var die_step = die_size + die_spacing
             for (var i = 0; i < dice.length; i++) {
-                var col = i % n_cols
-                var row = Math.floor (i / n_cols)
+                var col = Math.floor (i / n_rows)
+                var row = i % n_rows
                 dice[i].x = x_offset + col * die_step
                 dice[i].y = y_offset + row * die_step
             }
