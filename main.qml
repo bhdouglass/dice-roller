@@ -10,6 +10,7 @@
 
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import QtSensors 5.0
 import Ubuntu.Components 1.1
 
 MainView {
@@ -64,6 +65,11 @@ MainView {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: units.gu (2)
             onClicked: main_page.roll ()
+        }
+        SensorGesture {
+            enabled: true
+            gestures: [ "QtSensors.shake" ]
+            onDetected: main_page.roll ()
         }
         Component.onCompleted: {
             add_die ()
