@@ -23,6 +23,7 @@ MainView {
 
     Page {
         id: main_page
+        title: "Dice Roller"
         Item {
             id: table
             anchors.top: parent.top
