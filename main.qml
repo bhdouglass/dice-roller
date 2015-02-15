@@ -9,7 +9,6 @@
  */
 
 import QtQuick 2.0
-import QtQuick.Layouts 1.1
 import QtSensors 5.0
 import Ubuntu.Components 1.1
 
@@ -37,35 +36,66 @@ MainView {
         Label {
             id: total_label
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: buttons_layout.top
-            anchors.bottomMargin: units.gu (2)
-        }
-        RowLayout {
-            id: buttons_layout
-            anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: roll_button.top
             anchors.bottomMargin: units.gu (2)
-            Button {
-                id: remove_button
-                text: "-"
-                enabled: false
-                onClicked: main_page.remove_die ()
-            }
-            Button {
-                text: "+"
-                onClicked: main_page.add_die ()
-            }
         }
-        Button {
+        Rectangle {
             id: roll_button
-            text: "Roll"
-            anchors.left: parent.left
-            anchors.leftMargin: units.gu (2)
+            width: units.gu (10)
+            height: width
+            radius: width * 0.5
             anchors.right: parent.right
             anchors.rightMargin: units.gu (2)
             anchors.bottom: parent.bottom
             anchors.bottomMargin: units.gu (2)
-            onClicked: main_page.roll ()
+            opacity: enabled ? 1.0 : 0.5
+            Icon {
+                anchors.fill: parent
+                anchors.margins: units.gu (2)
+                name: "reload"
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: main_page.roll ()
+            }
+        }
+        Rectangle {
+            id: remove_button
+            enabled: false
+            width: units.gu (8)
+            height: width
+            radius: width * 0.5
+            anchors.left: parent.left
+            anchors.leftMargin: units.gu (2)
+            anchors.verticalCenter: roll_button.verticalCenter
+            opacity: enabled ? 1.0 : 0.5
+            Icon {
+                anchors.fill: parent
+                anchors.margins: units.gu (2)
+                name: "remove"
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: main_page.remove_die ()
+            }
+        }
+        Rectangle {
+            width: units.gu (8)
+            height: width
+            radius: width * 0.5
+            anchors.left: remove_button.right
+            anchors.leftMargin: units.gu (1)
+            anchors.verticalCenter: roll_button.verticalCenter
+            opacity: enabled ? 1.0 : 0.5
+            Icon {
+                anchors.fill: parent
+                anchors.margins: units.gu (2)
+                name: "add"
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: main_page.add_die ()
+            }
         }
         SensorGesture {
             enabled: true
