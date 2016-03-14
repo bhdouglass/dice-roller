@@ -10,12 +10,11 @@
 
 import QtQuick 2.0
 import QtSensors 5.0
-import Ubuntu.Components 1.1
+import Ubuntu.Components 1.3
 
 MainView {
     objectName: "mainView"
     applicationName: "com.ubuntu.developer.robert-ancell.dice-roller"
-    useDeprecatedToolbar: false
 
     width: units.gu (40)
     height: units.gu (71)
@@ -66,6 +65,7 @@ MainView {
             width: units.gu (8)
             height: width
             radius: width * 0.5
+            color: "white"
             anchors.left: parent.left
             anchors.leftMargin: units.gu (2)
             anchors.verticalCenter: roll_button.verticalCenter

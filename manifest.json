@@ -1,7 +1,7 @@
 {
     "architecture": "all",
     "description": "Simulate rolling dice",
-    "framework": "ubuntu-sdk-14.10",
+    "framework": "ubuntu-sdk-15.04",
     "hooks": {
         "dice-roller": {
             "apparmor": "dice-roller.apparmor",
