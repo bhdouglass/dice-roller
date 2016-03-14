@@ -150,7 +150,7 @@ MainView {
             for (var i = 0; i < dice.length; i++)
                 t += dice[i].value
             // TRANSLATORS: Label showing the total of all the dice values
-            total_label.text = "Total: %n".replace ("%n", t)
+            total_label.text = i18n.tr ("Total: %n").replace ("%n", t)
         }
         function update_rolling () {
             var rolling = false
