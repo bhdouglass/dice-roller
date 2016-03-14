@@ -1,7 +1,7 @@
 [Desktop Entry]
 _Name=Dice Roller
 _Comment=Simulate rolling dice
-_Keywords=d6,dice,roll,random
+_Keywords=d6,die,dice,roll,random
 Exec=qmlscene $@ main.qml
 Icon=dice-roller.png
 Terminal=false
