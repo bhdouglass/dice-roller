@@ -1,22 +1,25 @@
-# More information: https://wiki.ubuntu.com/Touch/Testing
-#
-# Notes for autopilot tests:
-# -----------------------------------------------------------
-# In order to run autopilot tests:
-# sudo apt-add-repository ppa:autopilot/ppa
-# sudo apt-get update
-# sudo apt-get install python-autopilot autopilot-qt
-#############################################################
+all: dice-roller.desktop \
+     po/com.ubuntu.developer.robert-ancell.dice-roller.pot
 
-all:
+click:
+	click build --ignore=Makefile --ignore=*.pot --ignore=*.po --ignore=*.qmlproject --ignore=*.qmlproject.user --ignore=*.in --ignore=po .
 
-autopilot:
-	chmod +x tests/autopilot/run
-	tests/autopilot/run
+#dice-roller.desktop: dice-roller.desktop.in po/*.po
+dice-roller.desktop: dice-roller.desktop.in
+	intltool-merge --desktop-style po $< $@
 
-check:
-	qmltestrunner -input tests/unit
+po/com.ubuntu.developer.robert-ancell.dice-roller.pot: main.qml dice-roller.desktop.in
+	touch po/com.ubuntu.developer.robert-ancell.dice-roller.pot
+	xgettext --language=JavaScript --keyword=tr --keyword=tr:1,2 --add-comments=TRANSLATORS main.qml -o po/com.ubuntu.developer.robert-ancell.dice-roller.pot
+	intltool-extract --type=gettext/keys dice-roller.desktop.in
+	xgettext --keyword=N_ dice-roller.desktop.in.h -j -o po/com.ubuntu.developer.robert-ancell.dice-roller.pot
+	rm -f dice-roller.desktop.in.h
+
+share/locale/%/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dice-roller.mo: po/%.po
+	msgfmt -o $@ $<
+
+clean:
+	rm -f share/locale/*/*/*.mo dice-roller.desktop
 
 run:
 	/usr/bin/qmlscene $@ main.qml
-

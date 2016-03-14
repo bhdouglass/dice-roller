@@ -22,7 +22,8 @@ MainView {
 
     Page {
         id: main_page
-        title: "Dice Roller"
+        // TRANSLATORS: Title of application
+        title: i18n.tr ("Dice Roller")
         Item {
             id: table
             anchors.top: parent.top
@@ -148,7 +149,8 @@ MainView {
             var t = 0
             for (var i = 0; i < dice.length; i++)
                 t += dice[i].value
-            total_label.text = "Total: " + t
+            // TRANSLATORS: Label showing the total of all the dice values
+            total_label.text = "Total: %n".replace ("%n", t)
         }
         function update_rolling () {
             var rolling = false
