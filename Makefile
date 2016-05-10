@@ -1,11 +1,12 @@
 all: dice-roller.desktop \
-     po/com.ubuntu.developer.robert-ancell.dice-roller.pot
+     po/com.ubuntu.developer.robert-ancell.dice-roller.pot \
+     share/locale/fr/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dice-roller.mo \
+     share/locale/it/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dice-roller.mo
 
 click:
 	click build --ignore=Makefile --ignore=*.pot --ignore=*.po --ignore=*.qmlproject --ignore=*.qmlproject.user --ignore=*.in --ignore=po .
 
-#dice-roller.desktop: dice-roller.desktop.in po/*.po
-dice-roller.desktop: dice-roller.desktop.in
+dice-roller.desktop: dice-roller.desktop.in po/*.po
 	intltool-merge --desktop-style po $< $@
 
 po/com.ubuntu.developer.robert-ancell.dice-roller.pot: main.qml dice-roller.desktop.in
