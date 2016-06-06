@@ -1,0 +1,36 @@
+# Hungarian translation for dice-roller
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the dice-roller package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: dice-roller\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-03-15 11:46+1300\n"
+"PO-Revision-Date: 2016-06-05 13:54+0000\n"
+"Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-06-06 05:20+0000\n"
+"X-Generator: Launchpad (build 18086)\n"
+
+#. TRANSLATORS: Title of application
+#: main.qml:25 dice-roller.desktop.in.h:1
+msgid "Dice Roller"
+msgstr "Dobókockavető"
+
+#. TRANSLATORS: Label showing the total of all the dice values
+#: main.qml:153
+msgid "Total: %n"
+msgstr "Összesen: %n"
+
+#: dice-roller.desktop.in.h:2
+msgid "Simulate rolling dice"
+msgstr "Dobkockadobás szimulálása"
+
+#: dice-roller.desktop.in.h:3
+msgid "d6,die,dice,roll,random"
+msgstr "kocka, dobókocka, dobás, véletlen szám,d6"
