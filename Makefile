@@ -2,7 +2,10 @@ all: dice-roller.desktop \
      po/com.ubuntu.developer.robert-ancell.dice-roller.pot \
      share/locale/de/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dice-roller.mo \
      share/locale/fr/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dice-roller.mo \
-     share/locale/it/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dice-roller.mo
+     share/locale/hu/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dice-roller.mo \
+     share/locale/it/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dice-roller.mo \
+     share/locale/nl/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dice-roller.mo \
+     share/locale/zh_CN/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dice-roller.mo     
 
 click:
 	click build --ignore=Makefile --ignore=*.pot --ignore=*.po --ignore=*.qmlproject --ignore=*.qmlproject.user --ignore=*.in --ignore=po .
