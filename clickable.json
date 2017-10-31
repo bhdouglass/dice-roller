@@ -1,0 +1,9 @@
+{
+  "template": "pure",
+  "ignore": [
+    "Makefile",
+    "po",
+    "dice-roller.desktop.in"
+  ],
+  "re-build": "make"
+}
