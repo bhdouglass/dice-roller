@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-15 11:46+1300\n"
+"POT-Creation-Date: 2017-11-04 01:33-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. TRANSLATORS: Title of application
-#: main.qml:25 dice-roller.desktop.in.h:1
+#: Main.qml:25 dice-roller.desktop.in.h:1
 msgid "Dice Roller"
 msgstr ""
 
 #. TRANSLATORS: Label showing the total of all the dice values
-#: main.qml:153
+#: Main.qml:153
 msgid "Total: %n"
 msgstr ""
 

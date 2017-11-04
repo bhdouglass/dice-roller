@@ -14,7 +14,7 @@ import Ubuntu.Components 1.3
 
 MainView {
     objectName: "mainView"
-    applicationName: "com.ubuntu.developer.robert-ancell.dice-roller"
+    applicationName: "dice-roller.bhdouglass"
 
     width: units.gu (40)
     height: units.gu (71)

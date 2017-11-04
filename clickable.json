@@ -1,6 +1,7 @@
 {
   "template": "pure",
   "ignore": [
+    ".git",
     "Makefile",
     "po",
     "dice-roller.desktop.in"
