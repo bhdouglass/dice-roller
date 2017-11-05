@@ -11,9 +11,10 @@ all: dice-roller.desktop \
 dice-roller.desktop: dice-roller.desktop.in po/*.po
 	intltool-merge --desktop-style po $< $@
 
-po/dice-roller.bhdouglass.pot: Main.qml dice-roller.desktop.in
+po/dice-roller.bhdouglass.pot: Main.qml DiceDialog.qml dice-roller.desktop.in
 	touch po/dice-roller.bhdouglass.pot
 	xgettext --language=JavaScript --keyword=tr --keyword=tr:1,2 --add-comments=TRANSLATORS Main.qml -o po/dice-roller.bhdouglass.pot
+	xgettext --language=JavaScript --keyword=tr --keyword=tr:1,2 --add-comments=TRANSLATORS DiceDialog.qml -o po/dice-roller.bhdouglass.pot
 	intltool-extract --type=gettext/keys dice-roller.desktop.in
 	xgettext --keyword=N_ dice-roller.desktop.in.h -j -o po/dice-roller.bhdouglass.pot
 	rm -f dice-roller.desktop.in.h
