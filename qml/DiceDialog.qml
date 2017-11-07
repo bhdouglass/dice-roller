@@ -20,8 +20,7 @@ Dialog {
         columns: 2
 
         Button {
-            //TODO make this a "coin"
-            text: i18n.tr('d2')
+            text: i18n.tr('coin')
             color: UbuntuColors.orange
             Layout.fillWidth: true
 

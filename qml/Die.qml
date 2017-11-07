@@ -12,7 +12,7 @@ Rectangle {
 
     color: {
         if (num == 2) {
-            return 'yellow';
+            return 'gold';
         }
         else if (num == 4) {
             return 'red'
@@ -31,7 +31,7 @@ Rectangle {
         }
     }
 
-    radius: width * 0.1
+    radius: (num == 2) ? width : width * 0.1
     border.color: "grey"
     border.width: held ? 4 : 1
     property bool animation_enabled: false
@@ -169,7 +169,19 @@ Rectangle {
         font.bold: true
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-        text: value
+        text: {
+            if (num == 2) {
+                if (value == 1) {
+                    return 'H';
+                }
+                else {
+                    return 'T';
+                }
+            }
+            else {
+                return value;
+            }
+        }
         visible: num != 6
         color: (num == 20) ? 'white' : 'black'
     }
