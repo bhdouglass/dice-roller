@@ -2,7 +2,7 @@
 _Name=Dice Roller
 _Comment=Simulate rolling dice
 _Keywords=d6,die,dice,roll,random
-Exec=qmlscene $@ Main.qml
+Exec=qmlscene $@ qml/Main.qml
 Icon=dice-roller.png
 Terminal=false
 Type=Application
