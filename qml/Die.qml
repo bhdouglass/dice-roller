@@ -14,28 +14,40 @@ Rectangle {
         if (num == 2) {
             return 'gold';
         }
-        else if (num == 4) {
-            return 'red'
-        }
-        else if (num == 8) {
-            return 'green';
-        }
-        else if (num == 12) {
-            return 'blue';
-        }
-        else if (num == 20) {
-            return 'black';
+        else if (num == 6) {
+            return 'white';
         }
         else {
-            return 'white';
+            return 'transparent';
         }
     }
 
     radius: (num == 2) ? width : width * 0.1
-    border.color: "grey"
-    border.width: held ? 4 : 1
+    border.color: (num == 2 || num == 6) ? 'black' : 'transparent'
+    border.width: held ? 10 : 6
     property bool animation_enabled: false
     property var dot_size: width / 7
+
+    Image {
+        anchors.fill: parent
+        source: {
+            if (num == 8) {
+                return '../img/d8.svg';
+            }
+            else if (num == 12) {
+                return '../img/d12.svg';
+            }
+            else if (num == 20) {
+                return '../img/d20.svg';
+            }
+            else {
+                return '../img/d4.svg';
+            }
+        }
+        sourceSize.width: 400
+        sourceSize.height: 500
+        visible: num != 2 && num != 6
+    }
 
     Rectangle {
         id: dot_nw
@@ -165,7 +177,7 @@ Rectangle {
         id: label
         anchors.fill: parent
         anchors.margins: units.gu(1)
-        font.pixelSize: height
+        font.pixelSize: height * 3/4
         font.bold: true
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
@@ -183,7 +195,7 @@ Rectangle {
             }
         }
         visible: num != 6
-        color: (num == 20) ? 'white' : 'black'
+        color: 'black'
     }
 
     MouseArea {
