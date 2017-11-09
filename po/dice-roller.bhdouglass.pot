@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-07 13:29-0500\n"
+"POT-Creation-Date: 2017-11-09 08:37-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,32 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: qml/DiceDialog.qml:13
-msgid "Pick new dice"
+#: qml/AboutPage.qml:8
+msgid "About"
 msgstr ""
 
-#: qml/DiceDialog.qml:23
-msgid "coin"
-msgstr ""
-
-#: qml/DiceDialog.qml:35
-msgid "d4"
-msgstr ""
-
-#: qml/DiceDialog.qml:47
-msgid "d6"
-msgstr ""
-
-#: qml/DiceDialog.qml:59
-msgid "d8"
-msgstr ""
-
-#: qml/DiceDialog.qml:71
-msgid "d12"
-msgstr ""
-
-#: qml/DiceDialog.qml:83
-msgid "d20"
-msgstr ""
-
-#: qml/DiceDialog.qml:96
-msgid "Cancel"
-msgstr ""
-
-#: dice-roller.desktop.in.h:1
+#: qml/AboutPage.qml:33 dice-roller.desktop.in.h:1
 msgid "Dice Roller"
+msgstr ""
+
+#: qml/AboutPage.qml:41
+msgid "A fork of the original Dice Roller app by Robert Ancell"
+msgstr ""
+
+#: qml/AboutPage.qml:49
+msgid "Awesome icons by Joan CiberSheep (based on icons from the noun project)"
+msgstr ""
+
+#: qml/AboutPage.qml:57
+msgid "Fork by Brian Douglass"
+msgstr ""
+
+#: qml/AboutPage.qml:65
+msgid "This app is open source software under the GPL v3."
+msgstr ""
+
+#: qml/AboutPage.qml:73
+msgid "Website"
 msgstr ""
 
 #: dice-roller.desktop.in.h:2
