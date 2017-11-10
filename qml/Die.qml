@@ -6,7 +6,7 @@ Item {
 
     property int num: 2
     property var values: null
-    property var value: 1
+    property var value
     property var new_value
     property var held: false
     signal changed()
@@ -14,7 +14,6 @@ Item {
 
     onNumChanged: {
         update_face();
-        roll();
     }
 
     property bool animation_enabled: false
@@ -156,10 +155,10 @@ Item {
         visible: (num == 10 || num == 100)
         anchors {
             fill: parent
-            topMargin: (num == 10) ? units.gu(2) : units.gu(1)
-            rightMargin: units.gu(1)
-            bottomMargin: units.gu(1)
-            leftMargin: units.gu(1)
+            topMargin: (num == 10) ? parent.height / 5 : parent.height / 10
+            rightMargin: parent.height / 10
+            bottomMargin: parent.height / 10
+            leftMargin: parent.height / 10
         }
 
         font.pixelSize: {
@@ -175,7 +174,7 @@ Item {
         verticalAlignment: Label.AlignTop
         horizontalAlignment: Label.AlignHCenter
 
-        text: value
+        text: value ? value : ''
         color: 'black'
     }
 
@@ -184,10 +183,10 @@ Item {
         visible: (num == 2)
         anchors {
             fill: parent
-            topMargin: units.gu(2)
-            rightMargin: units.gu(2)
-            bottomMargin: units.gu(1)
-            leftMargin: units.gu(1)
+            topMargin: parent.height / 5
+            rightMargin: parent.height / 5
+            bottomMargin: parent.height / 10
+            leftMargin: parent.height / 10
         }
 
         font.pixelSize: height * 3/4
@@ -211,7 +210,7 @@ Item {
         //Centered
         visible: (num != 2 && num != 6 && num != 10 && num != 100)
         anchors.fill: parent
-        anchors.margins: units.gu(1)
+        anchors.margins: parent.height / 10
         font.pixelSize: {
             if (num == 20) {
                 return height * 3/8;
@@ -225,7 +224,7 @@ Item {
         verticalAlignment: Label.AlignVCenter
         horizontalAlignment: Label.AlignHCenter
 
-        text: value
+        text: value ? value : ''
         color: 'black'
     }
 
@@ -335,10 +334,5 @@ Item {
                 break;
             }
         }
-    }
-
-    Component.onCompleted: {
-        //update_face();
-        //roll();
     }
 }
