@@ -1,15 +1,15 @@
 {
-    "architecture": "all",
-    "description": "Simulate rolling dice",
-    "framework": "ubuntu-sdk-15.04.6",
+    "maintainer": "Brian Douglass <bhdouglass@gmail.com>", 
+    "name": "dice-roller.bhdouglass", 
+    "title": "Dice Roller", 
     "hooks": {
         "dice-roller": {
-            "apparmor": "dice-roller.apparmor",
+            "apparmor": "dice-roller.apparmor", 
             "desktop": "dice-roller.desktop"
         }
-    },
-    "maintainer": "Brian Douglass <bhdouglass@gmail.com>",
-    "name": "dice-roller.bhdouglass",
-    "title": "Dice Roller",
-    "version": "1.0"
+    }, 
+    "framework": "ubuntu-sdk-15.04.6", 
+    "version": "2.0", 
+    "architecture": "all", 
+    "description": "Simulate rolling dice"
 }

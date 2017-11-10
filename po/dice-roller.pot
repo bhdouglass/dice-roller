@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dice-roller\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-10 14:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../qml/DiceDialog.qml:14
+msgid "Pick a new die"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:26
+msgid "coin"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:43
+msgid "d4"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:60
+msgid "d6"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:77
+msgid "d8"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:94
+msgid "d12"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:111
+msgid "d20"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:128
+msgid "d10 (1-10)"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:145
+msgid "d10 (0-9)"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:162
+msgid "d10 (00-90)"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:185
+msgid "d100"
+msgstr ""
+
+#: ../qml/DiceDialog.qml:201
+msgid "Cancel"
+msgstr ""
+
+#: ../qml/AboutPage.qml:8 ../qml/MainPage.qml:16
+msgid "About"
+msgstr ""
+
+#: ../qml/AboutPage.qml:33 ../qml/MainPage.qml:11 dice-roller.desktop.in.h:1
+msgid "Dice Roller"
+msgstr ""
+
+#: ../qml/AboutPage.qml:54
+msgid "A fork of the original Dice Roller app by Robert Ancell"
+msgstr ""
+
+#: ../qml/AboutPage.qml:62
+msgid "Awesome icons by Joan CiberSheep (based on icons from the noun project)"
+msgstr ""
+
+#: ../qml/AboutPage.qml:70
+msgid "Fork by Brian Douglass"
+msgstr ""
+
+#: ../qml/AboutPage.qml:78
+msgid "This app is open source software under the GPL v3."
+msgstr ""
+
+#: ../qml/AboutPage.qml:86
+msgid "Website"
+msgstr ""
+
+#: ../qml/MainPage.qml:52
+msgid "Total: %n"
+msgstr ""
+
+#: dice-roller.desktop.in.h:2
+msgid "Simulate rolling dice"
+msgstr ""
+
+#: dice-roller.desktop.in.h:3
+msgid "d4,d6,d8,d12,d20,d10,d100,die,dice,roll,random,chance,coin"
+msgstr ""
