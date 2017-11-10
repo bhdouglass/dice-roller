@@ -7,6 +7,7 @@ Dialog {
     id: colorPopup
 
     property int num: 6
+    property var values: null
     signal closed()
 
     Label {
@@ -26,6 +27,8 @@ Dialog {
 
             onClicked: {
                 num = 2;
+                values = null;
+
                 closed();
                 PopupUtils.close(colorPopup);
             }
@@ -38,6 +41,8 @@ Dialog {
 
             onClicked: {
                 num = 4;
+                values = null;
+
                 closed();
                 PopupUtils.close(colorPopup);
             }
@@ -50,6 +55,8 @@ Dialog {
 
             onClicked: {
                 num = 6;
+                values = null;
+
                 closed();
                 PopupUtils.close(colorPopup);
             }
@@ -62,6 +69,8 @@ Dialog {
 
             onClicked: {
                 num = 8;
+                values = null;
+
                 closed();
                 PopupUtils.close(colorPopup);
             }
@@ -74,6 +83,8 @@ Dialog {
 
             onClicked: {
                 num = 12;
+                values = null;
+
                 closed();
                 PopupUtils.close(colorPopup);
             }
@@ -86,6 +97,50 @@ Dialog {
 
             onClicked: {
                 num = 20;
+                values = null;
+
+                closed();
+                PopupUtils.close(colorPopup);
+            }
+        }
+
+        Button {
+            text: i18n.tr('d10 (1-10)')
+            color: UbuntuColors.orange
+            Layout.fillWidth: true
+
+            onClicked: {
+                num = 10;
+                values = null;
+
+                closed();
+                PopupUtils.close(colorPopup);
+            }
+        }
+
+        Button {
+            text: i18n.tr('d10 (0-9)')
+            color: UbuntuColors.orange
+            Layout.fillWidth: true
+
+            onClicked: {
+                num = 10;
+                values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+                closed();
+                PopupUtils.close(colorPopup);
+            }
+        }
+
+        Button {
+            text: i18n.tr('d10 (00-90)')
+            color: UbuntuColors.orange
+            Layout.fillWidth: true
+
+            onClicked: {
+                num = 10;
+                values = ['00', 10, 20, 30, 40, 50, 60, 70, 80, 90];
+
                 closed();
                 PopupUtils.close(colorPopup);
             }
@@ -98,6 +153,8 @@ Dialog {
 
             onClicked: {
                 num = 100;
+                values = null;
+
                 closed();
                 PopupUtils.close(colorPopup);
             }

@@ -5,6 +5,13 @@ Item {
     id: die
 
     property int num: 2
+    property var values: null
+    property var value: 1
+    property var new_value
+    property var held: false
+    signal changed()
+    signal rolled()
+
     onNumChanged: {
         update_face();
         roll();
@@ -63,7 +70,6 @@ Item {
     Image {
         anchors.fill: parent
         source: '../img/d' + num + '.svg'
-        onSourceChanged: console.log(source);
         sourceSize.width: 400
         sourceSize.height: 500
     }
@@ -146,11 +152,24 @@ Item {
     }
 
     Label {
-        visible: (num == 100)
-        anchors.fill: parent
-        anchors.margins: units.gu(1)
+        //Shifted up
+        visible: (num == 10 || num == 100)
+        anchors {
+            fill: parent
+            topMargin: (num == 10) ? units.gu(2) : units.gu(1)
+            rightMargin: units.gu(1)
+            bottomMargin: units.gu(1)
+            leftMargin: units.gu(1)
+        }
 
-        font.pixelSize: height * 3/8
+        font.pixelSize: {
+            if (num == 100) {
+                return height * 3/8;
+            }
+            else {
+                return height * 1/2;
+            }
+        }
         font.bold: true
 
         verticalAlignment: Label.AlignTop
@@ -161,6 +180,7 @@ Item {
     }
 
     Label {
+        //Shifted left
         visible: (num == 2)
         anchors {
             fill: parent
@@ -188,7 +208,8 @@ Item {
     }
 
     Label {
-        visible: (num != 2 && num != 6 && num != 100)
+        //Centered
+        visible: (num != 2 && num != 6 && num != 10 && num != 100)
         anchors.fill: parent
         anchors.margins: units.gu(1)
         font.pixelSize: {
@@ -213,18 +234,20 @@ Item {
         onPressed: held = !held
     }
 
-    property var value
-    property var new_value
-    property var held: false
-    signal changed()
-    signal rolled()
-
     function roll() {
-        if (held)
-            return
-        new_value = Math.floor(Math.random() * num) + 1
-        change_timer.start()
-        rotation += random_direction() * 360 * 10
+        if (!held) {
+            var random = Math.floor(Math.random() * num) + 1;
+
+            if (values) {
+                new_value = values[random - 1];
+            }
+            else {
+                new_value = random;
+            }
+
+            change_timer.start()
+            rotation += random_direction() * 360 * 10
+        }
     }
 
     function discard() {
@@ -315,7 +338,7 @@ Item {
     }
 
     Component.onCompleted: {
-        value = Math.floor(Math.random() * num) + 1
-        update_face()
+        //update_face();
+        //roll();
     }
 }

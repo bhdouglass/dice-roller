@@ -25,9 +25,7 @@ Page {
         DiceDialog {
             id: dialog
 
-            onClosed: dice.add({
-                num: num
-            })
+            onClosed: dice.add(num, values)
         }
     }
 

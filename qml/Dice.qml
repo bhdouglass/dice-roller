@@ -11,11 +11,18 @@ Item {
     property var die_size: units.gu(10)
     property var die_spacing: units.gu(1)
 
-    function add(settings) {
+    function add(num, values) {
         var die_component = Qt.createComponent('Die.qml');
         var die = die_component.createObject(table);
 
-        die.num = settings.num;
+        die.values = values;
+        if (values) {
+            die.num = values.length;
+        }
+        else {
+            die.num = num;
+        }
+
         die.width = die_size;
         die.height = die_size;
         die.opacity = 0;
@@ -31,9 +38,10 @@ Item {
 
         die.animation_enabled = true;
         die.opacity = 1;
+        die.roll();
     }
 
-    function remove_die() {
+    function remove() {
         if (dice.length > 0) {
             var die = dice.pop();
             die.discard()
@@ -55,9 +63,9 @@ Item {
     }
 
     function update_total() {
-        var t = 0
+        var t = 0;
         for (var i = 0; i < dice.length; i++) {
-            t += dice[i].value
+            t += parseInt(dice[i].value);
         }
 
         total = t;
