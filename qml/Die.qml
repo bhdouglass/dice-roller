@@ -6,7 +6,7 @@ Item {
 
     property int num: 2
     property var values: null
-    property var value
+    property var value: null
     property var new_value
     property var held: false
     signal changed()
@@ -174,7 +174,7 @@ Item {
         verticalAlignment: Label.AlignTop
         horizontalAlignment: Label.AlignHCenter
 
-        text: value ? value : ''
+        text: (value == null) ? '' : value
         color: 'black'
     }
 
@@ -224,7 +224,7 @@ Item {
         verticalAlignment: Label.AlignVCenter
         horizontalAlignment: Label.AlignHCenter
 
-        text: value ? value : ''
+        text: (value == null) ? '' : value
         color: 'black'
     }
 
