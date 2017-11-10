@@ -31,8 +31,21 @@ Page {
                 Layout.fillWidth: true
 
                 text: i18n.tr('Dice Roller')
+                textSize: Label.XLarge
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WordWrap
+            }
+
+            Item {
+                Layout.preferredHeight: logo.height
+                Layout.fillWidth: true
+
+                Image {
+                    id: logo
+                    anchors.centerIn: parent
+
+                    source: '../img/icon.svg'
+                }
             }
 
             Label {
