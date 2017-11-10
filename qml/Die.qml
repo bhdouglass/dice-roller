@@ -155,20 +155,13 @@ Item {
         visible: (num == 10 || num == 100)
         anchors {
             fill: parent
-            topMargin: (num == 10) ? parent.height / 5 : parent.height / 10
+            topMargin: parent.height / 5
             rightMargin: parent.height / 10
             bottomMargin: parent.height / 10
             leftMargin: parent.height / 10
         }
 
-        font.pixelSize: {
-            if (num == 100) {
-                return height * 3/8;
-            }
-            else {
-                return height * 1/2;
-            }
-        }
+        font.pixelSize: height * 1/2
         font.bold: true
 
         verticalAlignment: Label.AlignTop
