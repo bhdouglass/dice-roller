@@ -11,6 +11,10 @@ Item {
     property var die_size: units.gu(10)
     property var die_spacing: units.gu(1)
 
+    //Catch orientation changes
+    onWidthChanged: layout();
+    onHeightChanged: layout();
+
     function add(num, values) {
         var die_component = Qt.createComponent('Die.qml');
         var die = die_component.createObject(table);

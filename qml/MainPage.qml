@@ -25,7 +25,7 @@ Page {
         DiceDialog {
             id: dialog
 
-            onClosed: dice.add(num, values)
+            onClosed: dice_table.add(num, values)
         }
     }
 
@@ -39,8 +39,8 @@ Page {
         anchors.margins: units.gu(2)
         spacing: units.gu(1)
 
-        Dice {
-            id: dice
+        DiceTable {
+            id: dice_table
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
@@ -48,8 +48,8 @@ Page {
         Label {
             Layout.fillWidth: true
 
-            visible: dice.count > 1
-            text: i18n.tr("Total: %n").replace("%n", dice.total)
+            visible: dice_table.count > 1
+            text: i18n.tr("Total: %n").replace("%n", dice_table.total)
             horizontalAlignment: Label.AlignHCenter
         }
 
@@ -60,11 +60,11 @@ Page {
             Icon {
                 name: 'remove'
                 Layout.preferredHeight: units.gu(5)
-                opacity: dice.count > 0 ? 1 : 0.5
+                opacity: dice_table.count > 0 ? 1 : 0.5
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: dice.remove()
+                    onClicked: dice_table.remove()
                 }
             }
 
@@ -86,11 +86,11 @@ Page {
             Icon {
                 name: 'reload'
                 Layout.preferredHeight: units.gu(5)
-                opacity: dice.rolling ? 0.5 : 1
+                opacity: dice_table.rolling ? 0.5 : 1
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: dice.roll()
+                    onClicked: dice_table.roll()
                 }
             }
         }
