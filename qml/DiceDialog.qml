@@ -90,6 +90,18 @@ Dialog {
                 PopupUtils.close(colorPopup);
             }
         }
+
+        Button {
+            text: i18n.tr('d100')
+            color: UbuntuColors.orange
+            Layout.fillWidth: true
+
+            onClicked: {
+                num = 100;
+                closed();
+                PopupUtils.close(colorPopup);
+            }
+        }
     }
 
     Button {

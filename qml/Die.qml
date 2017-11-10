@@ -1,52 +1,71 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.3
 
-Rectangle {
+Item {
     id: die
 
-    property int num: 1
+    property int num: 2
     onNumChanged: {
         update_face();
         roll();
     }
 
-    color: {
-        if (num == 2) {
-            return 'gold';
-        }
-        else if (num == 6) {
-            return 'white';
-        }
-        else {
-            return 'transparent';
-        }
-    }
-
-    radius: (num == 2) ? width : width * 0.1
-    border.color: (num == 2 || num == 6) ? 'black' : 'transparent'
-    border.width: held ? 10 : 6
     property bool animation_enabled: false
     property var dot_size: width / 7
 
-    Image {
-        anchors.fill: parent
-        source: {
-            if (num == 8) {
-                return '../img/d8.svg';
-            }
-            else if (num == 12) {
-                return '../img/d12.svg';
-            }
-            else if (num == 20) {
-                return '../img/d20.svg';
-            }
-            else {
-                return '../img/d4.svg';
+    Behavior on rotation {
+        NumberAnimation {
+            id: animation
+            easing.type: Easing.InOutQuint
+            duration: 1000
+            onRunningChanged: {
+                if (!running)
+                    die.rolled()
             }
         }
+    }
+
+    Behavior on x {
+        enabled: animation_enabled
+        NumberAnimation {
+            easing: UbuntuAnimation.StandardEasing
+            duration: UbuntuAnimation.FastDuration
+        }
+    }
+
+    Behavior on y {
+        enabled: animation_enabled
+        NumberAnimation {
+            easing: UbuntuAnimation.StandardEasing
+            duration: UbuntuAnimation.FastDuration
+        }
+    }
+
+    Behavior on opacity {
+        enabled: animation_enabled
+        NumberAnimation {
+            id: opacity_animation
+            easing: UbuntuAnimation.StandardEasing
+            duration: UbuntuAnimation.FastDuration
+        }
+    }
+
+    Timer {
+        id: change_timer
+        interval: 500
+        onTriggered: {
+            value = new_value
+            update_face()
+            die.changed()
+        }
+    }
+
+    Image {
+        anchors.fill: parent
+        source: '../img/d' + num + '.svg'
+        onSourceChanged: console.log(source);
         sourceSize.width: 400
         sourceSize.height: 500
-        visible: num != 2 && num != 6
     }
 
     Rectangle {
@@ -126,75 +145,66 @@ Rectangle {
         color: "black"
     }
 
-    Behavior on rotation {
-        NumberAnimation {
-            id: animation
-            easing.type: Easing.InOutQuint
-            duration: 1000
-            onRunningChanged: {
-                if (!running)
-                    die.rolled()
-            }
-        }
-    }
+    Label {
+        visible: (num == 100)
+        anchors.fill: parent
+        anchors.margins: units.gu(1)
 
-    Behavior on x {
-        enabled: animation_enabled
-        NumberAnimation {
-            easing: UbuntuAnimation.StandardEasing
-            duration: UbuntuAnimation.FastDuration
-        }
-    }
+        font.pixelSize: height * 3/8
+        font.bold: true
 
-    Behavior on y {
-        enabled: animation_enabled
-        NumberAnimation {
-            easing: UbuntuAnimation.StandardEasing
-            duration: UbuntuAnimation.FastDuration
-        }
-    }
+        verticalAlignment: Label.AlignTop
+        horizontalAlignment: Label.AlignHCenter
 
-    Behavior on opacity {
-        enabled: animation_enabled
-        NumberAnimation {
-            id: opacity_animation
-            easing: UbuntuAnimation.StandardEasing
-            duration: UbuntuAnimation.FastDuration
-        }
-    }
-
-    Timer {
-        id: change_timer
-        interval: 500
-        onTriggered: {
-            value = new_value
-            update_face()
-            die.changed()
-        }
+        text: value
+        color: 'black'
     }
 
     Label {
-        id: label
-        anchors.fill: parent
-        anchors.margins: units.gu(1)
+        visible: (num == 2)
+        anchors {
+            fill: parent
+            topMargin: units.gu(2)
+            rightMargin: units.gu(2)
+            bottomMargin: units.gu(1)
+            leftMargin: units.gu(1)
+        }
+
         font.pixelSize: height * 3/4
         font.bold: true
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
+
+        verticalAlignment: Label.AlignTop
+        horizontalAlignment: Label.AlignHCenter
+
         text: {
-            if (num == 2) {
-                if (value == 1) {
-                    return 'H';
-                }
-                else {
-                    return 'T';
-                }
+            if (value == 1) {
+                return 'H';
             }
             else {
-                return value;
+                return 'T';
             }
         }
-        visible: num != 6
+        color: 'black'
+    }
+
+    Label {
+        visible: (num != 2 && num != 6 && num != 100)
+        anchors.fill: parent
+        anchors.margins: units.gu(1)
+        font.pixelSize: {
+            if (num == 20) {
+                return height * 3/8;
+            }
+            else {
+                return height * 3/4;
+            }
+        }
+        font.bold: true
+
+        verticalAlignment: Label.AlignVCenter
+        horizontalAlignment: Label.AlignHCenter
+
+        text: value
         color: 'black'
     }
 
