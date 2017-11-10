@@ -1,6 +1,4 @@
 {
-    "policy_groups": [
-        "sensors"
-    ],
+    "policy_groups": [],
     "policy_version": 1.3
 }
