@@ -3,7 +3,7 @@
 A dice rolling app for Ubuntu Touch. Contains various different kinds of dice
 for use with many different kinds of games and pen & paper RPGs!
 
-This a for of the [Dice Roller app by Robert Ancell](https://launchpad.net/dice-roller).
+This a fork of the [Dice Roller app by Robert Ancell](https://launchpad.net/dice-roller).
 
 ## Contributions
 
