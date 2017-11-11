@@ -1,4 +1,5 @@
 import QtQuick 2.4
+import QtSensors 5.0
 import Ubuntu.Components 1.3
 
 Item {
@@ -14,6 +15,13 @@ Item {
     //Catch orientation changes
     onWidthChanged: layout();
     onHeightChanged: layout();
+
+    SensorGesture {
+        id: sensorGesture
+        enabled: true
+        gestures : ["QtSensors.shake"]
+        onDetected: roll()
+    }
 
     function add(num, values) {
         var die_component = Qt.createComponent('Die.qml');
