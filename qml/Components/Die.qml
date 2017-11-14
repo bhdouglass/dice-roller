@@ -68,7 +68,8 @@ Item {
 
     Image {
         anchors.fill: parent
-        source: '../img/d' + num + '.svg'
+        //TODO use a qrc file
+        source: '../../img/d' + num + '.svg'
         sourceSize.width: 400
         sourceSize.height: 500
     }

@@ -1,10 +1,16 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
+import QtQuick.LocalStorage 2.0
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 
+import "Components"
+import "Dialogs"
+
 Page {
     id: main_page
+
+    property var collections: []
 
     header: PageHeader {
         id: header
@@ -15,17 +21,82 @@ Page {
                 iconName: 'info'
                 text: i18n.tr('About')
                 onTriggered: pageStack.push(Qt.resolvedUrl('AboutPage.qml'))
+            },
+
+            Action {
+                iconName: 'save'
+                text: i18n.tr('Save Collection')
+                //TODO handle no dice on the table
+                onTriggered: PopupUtils.open(collectionNameDialogComponent, root)
             }
         ]
     }
 
+    function get_database() {
+        return LocalStorage.openDatabaseSync('dice-roller', '1.0', 'Dice Roller settings', 1000000);
+    }
+
+    Component.onCompleted: {
+        var db = get_database();
+        db.transaction(function(tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS collection(name TEXT, dice TEXT)'); //This is bad usage of a sql database (storing json like this), but it simplifies things
+
+            var collections = tx.executeSql('SELECT * FROM collection');
+            for (var i = 0; i < collections.rows.length; i++) {
+                try {
+                    main_page.collections.push({
+                        name: collections.rows.item(i).name,
+                        dice: JSON.parse(collections.rows.item(i).dice)
+                    });
+                }
+                catch (e) {
+                    console.log('WARNING: skipping collection, probably has bad json data');
+                }
+            }
+        });
+    }
+
+    function saveCollection(name) {
+        var db = get_database();
+        db.transaction(function(tx) {
+            var dice = [];
+            for (var i = 0; i < dice_table.dice.length; i++) {
+                var die = dice_table.dice[i];
+                dice.push({
+                    num: die.num,
+                    values: die.values,
+                });
+            }
+
+            tx.executeSql('INSERT INTO collection VALUES(?, ?)', [name, JSON.stringify(dice)])
+
+            //TODO popup a success message
+            console.log('SAVED!');
+        });
+    }
+
     Component {
-        id: dialogComponent
+        id: diceDialogComponent
 
         DiceDialog {
-            id: dialog
+            id: diceDialog
+            collections: main_page.collections
 
-            onClosed: dice_table.add(num, values)
+            onDiePicked: dice_table.add(num, values)
+            onCollectionPicked: {
+                dice_table.clear();
+                dice_table.add_multiple(dice);
+            }
+        }
+    }
+
+    Component {
+        id: collectionNameDialogComponent
+
+        CollectionNameDialog {
+            id: collectionNameDialog
+
+            onSaved: saveCollection(name)
         }
     }
 
@@ -74,7 +145,7 @@ Page {
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: PopupUtils.open(dialogComponent, root)
+                    onClicked: PopupUtils.open(diceDialogComponent, root)
                 }
             }
 

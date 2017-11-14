@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dice-roller\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-11 04:06+0000\n"
+"POT-Creation-Date: 2017-11-14 21:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,59 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/DiceDialog.qml:14
-msgid "Pick a new die"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:26
-msgid "coin"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:43
-msgid "d4"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:60
-msgid "d6"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:77
-msgid "d8"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:94
-msgid "d12"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:111
-msgid "d20"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:128
-msgid "d10 (1-10)"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:145
-msgid "d10 (0-9)"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:162
-msgid "d10 (00-90)"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:185
-msgid "d100"
-msgstr ""
-
-#: ../qml/DiceDialog.qml:201
-msgid "Cancel"
-msgstr ""
-
-#: ../qml/AboutPage.qml:8 ../qml/MainPage.qml:16
+#: ../qml/AboutPage.qml:8 ../qml/MainPage.qml:22
 msgid "About"
 msgstr ""
 
-#: ../qml/AboutPage.qml:33 ../qml/MainPage.qml:11 dice-roller.desktop.in.h:1
+#: ../qml/AboutPage.qml:33 ../qml/MainPage.qml:17 dice-roller.desktop.in.h:1
 msgid "Dice Roller"
 msgstr ""
 
@@ -93,7 +45,72 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: ../qml/MainPage.qml:52
+#: ../qml/Dialogs/DiceDialog.qml:32
+msgid "Pick a new die"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:45
+msgid "coin"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:59
+msgid "d4"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:73
+msgid "d6"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:87
+msgid "d8"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:101
+msgid "d12"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:115
+msgid "d20"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:129
+msgid "d10 (1-10)"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:143
+msgid "d10 (0-9)"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:157
+msgid "d10 (00-90)"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:177
+msgid "d100"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:191
+msgid "Pick a collection"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:216
+#: ../qml/Dialogs/CollectionNameDialog.qml:33
+msgid "Cancel"
+msgstr ""
+
+#: ../qml/Dialogs/CollectionNameDialog.qml:14
+msgid "Choose a name for this collection of dice"
+msgstr ""
+
+#: ../qml/Dialogs/CollectionNameDialog.qml:23
+msgid "Save"
+msgstr ""
+
+#: ../qml/MainPage.qml:28
+msgid "Save Collection"
+msgstr ""
+
+#: ../qml/MainPage.qml:123
 msgid "Total: %n"
 msgstr ""
 

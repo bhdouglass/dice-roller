@@ -27,8 +27,8 @@ Item {
         var die_component = Qt.createComponent('Die.qml');
         var die = die_component.createObject(table);
 
-        die.values = values;
         if (values) {
+            die.values = values;
             die.num = values.length;
         }
         else {
@@ -53,6 +53,12 @@ Item {
         die.roll();
     }
 
+    function add_multiple(dice) {
+        for (var i = 0; i < dice.length; i++) {
+            add(dice[i].num, dice[i].value);
+        }
+    }
+
     function remove() {
         if (dice.length > 0) {
             var die = dice.pop();
@@ -61,6 +67,12 @@ Item {
 
             update_total();
             layout();
+        }
+    }
+
+    function clear() {
+        while (dice.length > 0) {
+            remove();
         }
     }
 
