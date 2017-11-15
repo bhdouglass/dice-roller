@@ -26,8 +26,14 @@ Page {
             Action {
                 iconName: 'save'
                 text: i18n.tr('Save Collection')
-                //TODO handle no dice on the table
-                onTriggered: PopupUtils.open(collectionNameDialogComponent, root)
+                onTriggered: {
+                    if (dice_table.dice.length === 0) {
+                        PopupUtils.open(noDiceDialogComponent, root);
+                    }
+                    else {
+                        PopupUtils.open(collectionNameDialogComponent, root);
+                    }
+                }
             }
         ]
     }
@@ -68,10 +74,10 @@ Page {
                 });
             }
 
-            tx.executeSql('INSERT INTO collection VALUES(?, ?)', [name, JSON.stringify(dice)])
+            tx.executeSql('INSERT INTO collection VALUES(?, ?)', [name, JSON.stringify(dice)]);
+            main_page.collections.push({name: name, dice: dice});
 
-            //TODO popup a success message
-            console.log('SAVED!');
+            PopupUtils.open(savedCollectionDialogComponent, root);
         });
     }
 
@@ -97,6 +103,24 @@ Page {
             id: collectionNameDialog
 
             onSaved: saveCollection(name)
+        }
+    }
+
+    Component {
+        id: noDiceDialogComponent
+
+        SimpleDialog {
+            id: noDiceDialog
+            text: i18n.tr('There are no dice to save\nTry adding dice before saving to a collection')
+        }
+    }
+
+    Component {
+        id: savedCollectionDialogComponent
+
+        SimpleDialog {
+            id: savedCollectionDialog
+            text: i18n.tr('You collection has been saved')
         }
     }
 
