@@ -11,6 +11,7 @@ Dialog {
     property var collections: []
     signal diePicked(int num, var values)
     signal collectionPicked(var dice)
+    signal collectionRemoved(string name)
 
     Flickable {
         height: units.gu(50)
@@ -196,15 +197,19 @@ Dialog {
                 model: collections
                 delegate: Label {
                     Layout.fillWidth: true
+                    Layout.preferredHeight: units.gu(3)
                     text: modelData.name
-
-                    //TODO remove collection (maybe use a list item here?)
 
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
                             collectionPicked(modelData.dice);
                             PopupUtils.close(dicePopup);
+                        }
+
+                        onPressAndHold: {
+                            PopupUtils.close(dicePopup);
+                            collectionRemoved(modelData.name);
                         }
                     }
                 }

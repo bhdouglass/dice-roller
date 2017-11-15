@@ -8,7 +8,7 @@ import "Components"
 import "Dialogs"
 
 Page {
-    id: main_page
+    id: mainPage
 
     property var collections: []
 
@@ -38,19 +38,19 @@ Page {
         ]
     }
 
-    function get_database() {
+    function getDatabase() {
         return LocalStorage.openDatabaseSync('dice-roller', '1.0', 'Dice Roller settings', 1000000);
     }
 
-    Component.onCompleted: {
-        var db = get_database();
-        db.transaction(function(tx) {
-            tx.executeSql('CREATE TABLE IF NOT EXISTS collection(name TEXT, dice TEXT)'); //This is bad usage of a sql database (storing json like this), but it simplifies things
+    function loadCollections() {
+        mainPage.collections = [];
 
+        var db = getDatabase();
+        db.transaction(function(tx) {
             var collections = tx.executeSql('SELECT * FROM collection');
             for (var i = 0; i < collections.rows.length; i++) {
                 try {
-                    main_page.collections.push({
+                    mainPage.collections.push({
                         name: collections.rows.item(i).name,
                         dice: JSON.parse(collections.rows.item(i).dice)
                     });
@@ -62,8 +62,17 @@ Page {
         });
     }
 
+    Component.onCompleted: {
+        var db = getDatabase();
+        db.transaction(function(tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS collection(name TEXT, dice TEXT)'); //This is bad usage of a sql database (storing json like this), but it simplifies things
+        });
+
+        loadCollections();
+    }
+
     function saveCollection(name) {
-        var db = get_database();
+        var db = getDatabase();
         db.transaction(function(tx) {
             var dice = [];
             for (var i = 0; i < dice_table.dice.length; i++) {
@@ -75,10 +84,20 @@ Page {
             }
 
             tx.executeSql('INSERT INTO collection VALUES(?, ?)', [name, JSON.stringify(dice)]);
-            main_page.collections.push({name: name, dice: dice});
+            mainPage.collections.push({name: name, dice: dice});
 
             PopupUtils.open(savedCollectionDialogComponent, root);
         });
+    }
+
+    function removeCollection(name) {
+        var db = getDatabase();
+        db.transaction(function(tx) {
+            tx.executeSql('DELETE FROM collection WHERE name=?', [name]);
+        });
+
+        loadCollections();
+        PopupUtils.open(removedCollectionDialogComponent, root);
     }
 
     Component {
@@ -86,13 +105,15 @@ Page {
 
         DiceDialog {
             id: diceDialog
-            collections: main_page.collections
+            collections: mainPage.collections
 
             onDiePicked: dice_table.add(num, values)
             onCollectionPicked: {
                 dice_table.clear();
                 dice_table.add_multiple(dice);
             }
+
+            onCollectionRemoved: removeCollection(name)
         }
     }
 
@@ -121,6 +142,15 @@ Page {
         SimpleDialog {
             id: savedCollectionDialog
             text: i18n.tr('You collection has been saved')
+        }
+    }
+
+    Component {
+        id: removedCollectionDialogComponent
+
+        SimpleDialog {
+            id: removedCollectionDialog
+            text: i18n.tr('You collection has been removed')
         }
     }
 
