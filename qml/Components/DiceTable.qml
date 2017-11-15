@@ -41,6 +41,7 @@ Item {
 
         die.onChanged.connect(update_total);
         die.onRolled.connect(update_rolling);
+        die.onRemove.connect(remove_die);
 
         dice.push(die);
         count = dice.length;
@@ -59,6 +60,7 @@ Item {
         }
     }
 
+    //Remove the last die
     function remove() {
         if (dice.length > 0) {
             var die = dice.pop();
@@ -68,6 +70,25 @@ Item {
             update_total();
             layout();
         }
+    }
+
+    //Remove a specific die
+    function remove_die(die) {
+        var new_dice = [];
+        for (var i = 0; i < dice.length; i++) {
+            if (dice[i] == die) {
+                die.discard();
+            }
+            else {
+                new_dice.push(dice[i]);
+            }
+        }
+
+        dice = new_dice;
+        count = dice.length;
+
+        update_total();
+        layout();
     }
 
     function clear() {

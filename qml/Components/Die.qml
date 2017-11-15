@@ -11,6 +11,7 @@ Item {
     property var held: false
     signal changed()
     signal rolled()
+    signal remove(var die)
 
     onNumChanged: {
         update_face();
@@ -225,6 +226,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         onPressed: held = !held
+        onPressAndHold: remove(die)
     }
 
     function roll() {
