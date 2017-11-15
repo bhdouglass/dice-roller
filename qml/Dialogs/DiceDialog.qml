@@ -193,6 +193,13 @@ Dialog {
                 horizontalAlignment: Label.AlignHCenter
             }
 
+            Label {
+                Layout.fillWidth: true
+                text: i18n.tr('(Tap and hold to delete a collection)')
+                textSize: Label.XSmall
+                horizontalAlignment: Label.AlignHCenter
+            }
+
             Repeater {
                 model: collections
                 delegate: Label {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dice-roller\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-15 07:01+0000\n"
+"POT-Creation-Date: 2017-11-15 07:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,7 +93,11 @@ msgstr ""
 msgid "Pick a collection"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:221
+#: ../qml/Dialogs/DiceDialog.qml:198
+msgid "(Tap and hold to delete a collection)"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:228
 #: ../qml/Dialogs/CollectionNameDialog.qml:33
 msgid "Cancel"
 msgstr ""
