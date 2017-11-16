@@ -9,7 +9,7 @@
         }
     }, 
     "framework": "ubuntu-sdk-15.04.6", 
-    "version": "2.10", 
+    "version": "2.20", 
     "architecture": "all", 
     "description": "Simulate rolling dice"
 }

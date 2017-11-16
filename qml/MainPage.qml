@@ -11,6 +11,7 @@ Page {
     id: mainPage
 
     property var collections: []
+    property var customDice: []
 
     header: PageHeader {
         id: header
@@ -47,12 +48,12 @@ Page {
 
         var db = getDatabase();
         db.transaction(function(tx) {
-            var collections = tx.executeSql('SELECT * FROM collection');
-            for (var i = 0; i < collections.rows.length; i++) {
+            var results = tx.executeSql('SELECT * FROM collection');
+            for (var i = 0; i < results.rows.length; i++) {
                 try {
                     mainPage.collections.push({
-                        name: collections.rows.item(i).name,
-                        dice: JSON.parse(collections.rows.item(i).dice)
+                        name: results.rows.item(i).name,
+                        dice: JSON.parse(results.rows.item(i).dice)
                     });
                 }
                 catch (e) {
@@ -62,13 +63,36 @@ Page {
         });
     }
 
+    function loadCustomDice() {
+        mainPage.customDice = [];
+
+        var db = getDatabase();
+        db.transaction(function(tx) {
+            var results = tx.executeSql('SELECT * FROM custom_die');
+            for (var i = 0; i < results.rows.length; i++) {
+                try {
+                    mainPage.customDice.push({
+                        name: results.rows.item(i).name,
+                        values: JSON.parse(results.rows.item(i).sides)
+                    });
+                }
+                catch (e) {
+                    console.log('WARNING: skipping custom die, probably has bad json data');
+                }
+            }
+        });
+    }
+
+    //TODO make collection names and custom die names unique (have same names overwrite existing ones with the same name)
     Component.onCompleted: {
         var db = getDatabase();
         db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS collection(name TEXT, dice TEXT)'); //This is bad usage of a sql database (storing json like this), but it simplifies things
+            tx.executeSql('CREATE TABLE IF NOT EXISTS custom_die(name TEXT, sides TEXT)'); //This is bad usage of a sql database (storing json like this), but it simplifies things
         });
 
         loadCollections();
+        loadCustomDice();
     }
 
     function saveCollection(name) {
@@ -85,8 +109,6 @@ Page {
 
             tx.executeSql('INSERT INTO collection VALUES(?, ?)', [name, JSON.stringify(dice)]);
             mainPage.collections.push({name: name, dice: dice});
-
-            PopupUtils.open(savedCollectionDialogComponent, root);
         });
     }
 
@@ -100,12 +122,31 @@ Page {
         PopupUtils.open(removedCollectionDialogComponent, root);
     }
 
+    function saveCustomDie(name, values) {
+        var db = getDatabase();
+        db.transaction(function(tx) {
+            tx.executeSql('INSERT INTO custom_die VALUES(?, ?)', [name, JSON.stringify(values)]);
+            mainPage.customDice.push({name: name, values: values});
+        });
+    }
+
+    function removeCustomDie(name) {
+        var db = getDatabase();
+        db.transaction(function(tx) {
+            tx.executeSql('DELETE FROM custom_die WHERE name=?', [name]);
+        });
+
+        loadCustomDice();
+        PopupUtils.open(removedCustomDieDialogComponent, root);
+    }
+
     Component {
         id: diceDialogComponent
 
         DiceDialog {
             id: diceDialog
             collections: mainPage.collections
+            customDice: mainPage.customDice
 
             onDiePicked: dice_table.add(num, values)
             onCollectionPicked: {
@@ -114,6 +155,9 @@ Page {
             }
 
             onCollectionRemoved: removeCollection(name)
+
+            onCreateCustomDie: PopupUtils.open(customDieDialogComponent, root);
+            onCustomDieRemoved: removeCustomDie(name)
         }
     }
 
@@ -137,11 +181,11 @@ Page {
     }
 
     Component {
-        id: savedCollectionDialogComponent
+        id: removedCustomDieDialogComponent
 
         SimpleDialog {
-            id: savedCollectionDialog
-            text: i18n.tr('You collection has been saved')
+            id: removedCustomDieDialog
+            text: i18n.tr('You custom die has been removed')
         }
     }
 
@@ -151,6 +195,19 @@ Page {
         SimpleDialog {
             id: removedCollectionDialog
             text: i18n.tr('You collection has been removed')
+        }
+    }
+
+    Component {
+        id: customDieDialogComponent
+
+        CustomDieDialog {
+            id: customDieDialog
+
+            onSaved: {
+                saveCustomDie(name, values);
+                dice_table.add(values.length, values);
+            }
         }
     }
 
@@ -190,6 +247,7 @@ Page {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: dice_table.remove()
+                    onPressAndHold: dice_table.clear()
                 }
             }
 

@@ -9,9 +9,12 @@ Dialog {
     id: dicePopup
 
     property var collections: []
+    property var customDice: []
     signal diePicked(int num, var values)
     signal collectionPicked(var dice)
     signal collectionRemoved(string name)
+    signal createCustomDie()
+    signal customDieRemoved(string name)
 
     Flickable {
         height: units.gu(50)
@@ -31,6 +34,7 @@ Dialog {
             Label {
                 Layout.fillWidth: true
                 text: i18n.tr('Pick a new die')
+                font.bold: true
                 horizontalAlignment: Label.AlignHCenter
             }
 
@@ -189,13 +193,71 @@ Dialog {
 
             Label {
                 Layout.fillWidth: true
+                text: i18n.tr('Pick a custom die')
+                font.bold: true
+                horizontalAlignment: Label.AlignHCenter
+            }
+
+            GridLayout {
+                Layout.fillWidth: true
+                columnSpacing: units.gu(1)
+                rowSpacing: units.gu(1)
+                columns: 3
+
+                Repeater {
+                    model: customDice
+                    delegate: DiePicker {
+                        num: modelData.values.length
+                        value: modelData.values[0]
+                        values: modelData.values
+                        text: modelData.name
+
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: units.gu(7)
+
+                        onClicked: {
+                            diePicked(modelData.values.length, modelData.values);
+                            PopupUtils.close(dicePopup);
+                        }
+
+                        onPressAndHold: {
+                            PopupUtils.close(dicePopup);
+                            customDieRemoved(modelData.name);
+                        }
+                    }
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: units.gu(7)
+
+                    Icon {
+                        name: 'add'
+                        anchors.fill: parent
+                        anchors.margins: units.gu(1)
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                createCustomDie();
+                                PopupUtils.close(dicePopup);
+                            }
+                        }
+                    }
+                }
+            }
+
+            Label {
+                Layout.fillWidth: true
                 text: i18n.tr('Pick a collection')
+                font.bold: true
                 horizontalAlignment: Label.AlignHCenter
             }
 
             Label {
                 Layout.fillWidth: true
                 text: i18n.tr('(Tap and hold to delete a collection)')
+                visible: collections.length > 0
                 textSize: Label.XSmall
                 horizontalAlignment: Label.AlignHCenter
             }
@@ -220,6 +282,14 @@ Dialog {
                         }
                     }
                 }
+            }
+
+            Label {
+                Layout.fillWidth: true
+                Layout.preferredHeight: units.gu(3)
+                text: i18n.tr('No custom collections available')
+                visible: collections.length === 0
+                horizontalAlignment: Label.AlignHCenter
             }
         }
     }

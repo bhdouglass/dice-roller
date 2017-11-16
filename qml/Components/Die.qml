@@ -20,6 +20,38 @@ Item {
     property bool animation_enabled: false
     property var dot_size: width / 7
 
+    function is_d2() {
+        return (num <= 2);
+    }
+
+    function is_d4() {
+        return (num >= 3 && num <= 5);
+    }
+
+    function is_d6() {
+        return (num == 6);
+    }
+
+    function is_d8() {
+        return (num >= 7 && num <= 8);
+    }
+
+    function is_d10() {
+        return (num >= 9 && num <= 11);
+    }
+
+    function is_d12() {
+        return (num >= 12 && num <= 16);
+    }
+
+    function is_d20() {
+        return (num >= 17 && num <= 30);
+    }
+
+    function is_d100() {
+        return (num >= 30);
+    }
+
     Behavior on rotation {
         NumberAnimation {
             id: animation
@@ -70,7 +102,35 @@ Item {
     Image {
         anchors.fill: parent
         //TODO use a qrc file
-        source: '../../img/d' + num + '.svg'
+        source: {
+            var imageNum = 2;
+            if (is_d2()) {
+                imageNum = 2;
+            }
+            else if (is_d4()) {
+                imageNum = 4;
+            }
+            else if (is_d6()) {
+                imageNum = 6;
+            }
+            else if (is_d8()) {
+                imageNum = 8;
+            }
+            else if (is_d10()) {
+                imageNum = 10;
+            }
+            else if (is_d12()) {
+                imageNum = 12;
+            }
+            else if (is_d20()) {
+                imageNum = 20;
+            }
+            else if (is_d100()) {
+                imageNum = 100;
+            }
+
+            return '../../img/d' + imageNum + '.svg'
+        }
         sourceSize.width: 400
         sourceSize.height: 500
     }
@@ -154,7 +214,7 @@ Item {
 
     Label {
         //Shifted up
-        visible: (num == 10 || num == 100)
+        visible: (is_d10() || is_d100())
         anchors {
             fill: parent
             topMargin: parent.height / 5
@@ -175,7 +235,7 @@ Item {
 
     Label {
         //Shifted left
-        visible: (num == 2)
+        visible: is_d2()
         anchors {
             fill: parent
             topMargin: parent.height / 5
@@ -191,11 +251,16 @@ Item {
         horizontalAlignment: Label.AlignHCenter
 
         text: {
-            if (value == 1) {
-                return 'H';
+            if (values) {
+                return value;
             }
             else {
-                return 'T';
+                if (value == 1) {
+                    return 'H';
+                }
+                else {
+                    return 'T';
+                }
             }
         }
         color: 'black'
@@ -203,11 +268,21 @@ Item {
 
     Label {
         //Centered
-        visible: (num != 2 && num != 6 && num != 10 && num != 100)
+        visible:  {
+            if (is_d6()) {
+                return !!values;
+            }
+            else if (is_d2() || is_d10() || is_d100()) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
         anchors.fill: parent
         anchors.margins: parent.height / 10
         font.pixelSize: {
-            if (num == 20) {
+            if (num >= 20) {
                 return height * 3/8;
             }
             else {

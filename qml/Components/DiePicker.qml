@@ -4,9 +4,11 @@ import Ubuntu.Components 1.3
 Item {
     property alias text: label.text
     property alias num: die.num
+    property alias values: die.values
     property alias value: die.value
 
     signal clicked()
+    signal pressAndHold()
 
     Die {
         id: die
@@ -34,5 +36,6 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: parent.clicked()
+        onPressAndHold: parent.pressAndHold()
     }
 }
