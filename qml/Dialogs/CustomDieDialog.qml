@@ -9,6 +9,22 @@ Dialog {
 
     signal saved(string name, var values)
 
+    function save() {
+        var v = values.text.split(',');
+        var v2 = [];
+        for (var i = 0; i < v.length; i++) {
+            var value = v[i].trim();
+            if (value) {
+                v2.push(value);
+            }
+        }
+
+        if (v2.length > 0 && name.text.length > 0) {
+            saved(name.text, v2);
+            PopupUtils.close(customDicePopup);
+        }
+    }
+
     Label {
         text: i18n.tr('Create a custom die')
         horizontalAlignment: Label.AlignHCenter
@@ -32,27 +48,15 @@ Dialog {
 
     TextField {
         id: values
+
+        onAccepted: save()
     }
 
     Button {
         text: i18n.tr('Save')
         color: UbuntuColors.orange
 
-        onClicked: {
-            var v = values.text.split(',');
-            var v2 = [];
-            for (var i = 0; i < v.length; i++) {
-                var value = v[i].trim();
-                if (value) {
-                    v2.push(value);
-                }
-            }
-
-            if (v2.length > 0 && name.text.length > 0) {
-                saved(name.text, v2);
-                PopupUtils.close(customDicePopup);
-            }
-        }
+        onClicked: save()
     }
 
     Button {

@@ -17,6 +17,11 @@ Dialog {
 
     TextField {
         id: name
+
+        onAccepted: {
+            saved(name.text);
+            PopupUtils.close(namePopup);
+        }
     }
 
     Button {
