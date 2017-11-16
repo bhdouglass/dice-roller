@@ -252,7 +252,7 @@ Item {
 
         text: {
             if (values) {
-                return value;
+                return (value == null) ? '' : value;
             }
             else {
                 if (value == 1) {

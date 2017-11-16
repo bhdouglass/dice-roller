@@ -107,8 +107,14 @@ Page {
                 });
             }
 
-            tx.executeSql('INSERT INTO collection VALUES(?, ?)', [name, JSON.stringify(dice)]);
-            mainPage.collections.push({name: name, dice: dice});
+            var results = tx.executeSql('SELECT * FROM collection WHERE name = ?', [name]);
+            if (results.rows.length > 0) {
+                tx.executeSql('UPDATE collection SET dice=? WHERE name=?', [JSON.stringify(dice), name]);
+            }
+            else {
+                tx.executeSql('INSERT INTO collection VALUES(?, ?)', [name, JSON.stringify(dice)]);
+                mainPage.collections.push({name: name, dice: dice});
+            }
         });
     }
 
@@ -125,8 +131,14 @@ Page {
     function saveCustomDie(name, values) {
         var db = getDatabase();
         db.transaction(function(tx) {
-            tx.executeSql('INSERT INTO custom_die VALUES(?, ?)', [name, JSON.stringify(values)]);
-            mainPage.customDice.push({name: name, values: values});
+            var results = tx.executeSql('SELECT * FROM custom_die WHERE name = ?', [name]);
+            if (results.rows.length > 0) {
+                tx.executeSql('UPDATE custom_die SET sides=? WHERE name=?', [JSON.stringify(values), name]);
+            }
+            else {
+                tx.executeSql('INSERT INTO custom_die VALUES(?, ?)', [name, JSON.stringify(values)]);
+                mainPage.customDice.push({name: name, values: values});
+            }
         });
     }
 
