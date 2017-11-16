@@ -48,6 +48,7 @@ Dialog {
 
     TextField {
         id: values
+        inputMethodHints: Qt.ImhNoPredictiveText
 
         onAccepted: save()
     }
