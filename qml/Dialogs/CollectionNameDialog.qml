@@ -19,6 +19,7 @@ Dialog {
         id: name
 
         onAccepted: {
+            name.focus = false;
             saved(name.text);
             PopupUtils.close(namePopup);
         }
@@ -29,6 +30,7 @@ Dialog {
         color: UbuntuColors.orange
 
         onClicked: {
+            name.focus = false; //Needed because the predictive text cuts off the last part of input
             saved(name.text);
             PopupUtils.close(namePopup);
         }

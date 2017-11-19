@@ -7,10 +7,16 @@ import "../Components"
 Dialog {
     id: customDicePopup
 
+    property alias name: nameField.text
+    property var values: []
+    onValuesChanged: {
+        valuesField.text = values.join(', ');
+    }
+
     signal saved(string name, var values)
 
     function save() {
-        var v = values.text.split(',');
+        var v = valuesField.text.split(',');
         var v2 = [];
         for (var i = 0; i < v.length; i++) {
             var value = v[i].trim();
@@ -19,8 +25,8 @@ Dialog {
             }
         }
 
-        if (v2.length > 0 && name.text.length > 0) {
-            saved(name.text, v2);
+        if (v2.length > 0 && nameField.text.length > 0) {
+            saved(nameField.text, v2);
             PopupUtils.close(customDicePopup);
         }
     }
@@ -37,7 +43,7 @@ Dialog {
     }
 
     TextField {
-        id: name
+        id: nameField
     }
 
     Label {
@@ -47,7 +53,7 @@ Dialog {
     }
 
     TextField {
-        id: values
+        id: valuesField
         inputMethodHints: Qt.ImhNoPredictiveText
 
         onAccepted: save()

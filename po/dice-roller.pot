@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dice-roller\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-16 06:12+0000\n"
+"POT-Creation-Date: 2017-11-19 14:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,69 +45,108 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:36
+#: ../qml/Components/DiceBottomEdge.qml:22
+msgid "Collections & Custom Dice"
+msgstr ""
+
+#: ../qml/Components/DiceBottomEdge.qml:47
+msgid "Custom Dice"
+msgstr ""
+
+#: ../qml/Components/DiceBottomEdge.qml:91
+#: ../qml/Components/DiceBottomEdge.qml:169
+msgid "Delete"
+msgstr ""
+
+#: ../qml/Components/DiceBottomEdge.qml:101
+msgid "Edit"
+msgstr ""
+
+#: ../qml/Components/DiceBottomEdge.qml:106
+#: ../qml/Components/DiceBottomEdge.qml:179
+msgid "Add"
+msgstr ""
+
+#: ../qml/Components/DiceBottomEdge.qml:138
+#: ../qml/Dialogs/CustomDieDialog.qml:35
+msgid "Create a custom die"
+msgstr ""
+
+#: ../qml/Components/DiceBottomEdge.qml:145
+msgid "Dice Collections"
+msgstr ""
+
+#: ../qml/Components/DiceBottomEdge.qml:211
+msgid "Create a collection"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:33
 msgid "Pick a new die"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:50
+#: ../qml/Dialogs/DiceDialog.qml:47
 msgid "coin"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:64
+#: ../qml/Dialogs/DiceDialog.qml:61
 msgid "d4"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:78
+#: ../qml/Dialogs/DiceDialog.qml:75
 msgid "d6"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:92
+#: ../qml/Dialogs/DiceDialog.qml:89
 msgid "d8"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:106
+#: ../qml/Dialogs/DiceDialog.qml:103
 msgid "d12"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:120
+#: ../qml/Dialogs/DiceDialog.qml:117
 msgid "d20"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:134
+#: ../qml/Dialogs/DiceDialog.qml:131
 msgid "d10 (1-10)"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:148
+#: ../qml/Dialogs/DiceDialog.qml:145
 msgid "d10 (0-9)"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:162
+#: ../qml/Dialogs/DiceDialog.qml:159
 msgid "d10 (00-90)"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:182
+#: ../qml/Dialogs/DiceDialog.qml:179
 msgid "d100"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:196
+#: ../qml/Dialogs/DiceDialog.qml:193
 msgid "Pick a custom die"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:252
+#: ../qml/Dialogs/DiceDialog.qml:226
+msgid ""
+"No custom dice available,\n"
+"create some by swiping up from the bottom"
+msgstr ""
+
+#: ../qml/Dialogs/DiceDialog.qml:234
 msgid "Pick a collection"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:259
-msgid "(Tap and hold to delete a collection)"
+#: ../qml/Dialogs/DiceDialog.qml:258
+msgid ""
+"No collections available,\n"
+"create one by swiping up from the bottom"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:290
-msgid "No custom collections available"
-msgstr ""
-
-#: ../qml/Dialogs/DiceDialog.qml:298
-#: ../qml/Dialogs/CollectionNameDialog.qml:33
-#: ../qml/Dialogs/CustomDieDialog.qml:59
+#: ../qml/Dialogs/DiceDialog.qml:267
+#: ../qml/Dialogs/CollectionNameDialog.qml:40
+#: ../qml/Dialogs/CustomDieDialog.qml:70
 msgid "Cancel"
 msgstr ""
 
@@ -115,8 +154,8 @@ msgstr ""
 msgid "Choose a name for this collection of dice"
 msgstr ""
 
-#: ../qml/Dialogs/CollectionNameDialog.qml:23
-#: ../qml/Dialogs/CustomDieDialog.qml:38
+#: ../qml/Dialogs/CollectionNameDialog.qml:29
+#: ../qml/Dialogs/CustomDieDialog.qml:63
 msgid "Save"
 msgstr ""
 
@@ -124,37 +163,29 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-#: ../qml/Dialogs/CustomDieDialog.qml:13
-msgid "Create a custom die"
-msgstr ""
-
-#: ../qml/Dialogs/CustomDieDialog.qml:18
+#: ../qml/Dialogs/CustomDieDialog.qml:40
 msgid "Name"
 msgstr ""
 
-#: ../qml/Dialogs/CustomDieDialog.qml:28
+#: ../qml/Dialogs/CustomDieDialog.qml:50
 msgid "Enter side values separated by commas"
 msgstr ""
 
-#: ../qml/MainPage.qml:29
-msgid "Save Collection"
-msgstr ""
-
-#: ../qml/MainPage.qml:179
+#: ../qml/MainPage.qml:187
 msgid ""
 "There are no dice to save\n"
 "Try adding dice before saving to a collection"
 msgstr ""
 
-#: ../qml/MainPage.qml:188
+#: ../qml/MainPage.qml:196
 msgid "You custom die has been removed"
 msgstr ""
 
-#: ../qml/MainPage.qml:197
+#: ../qml/MainPage.qml:205
 msgid "You collection has been removed"
 msgstr ""
 
-#: ../qml/MainPage.qml:234
+#: ../qml/MainPage.qml:242
 msgid "Total: %n"
 msgstr ""
 

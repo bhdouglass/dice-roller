@@ -22,21 +22,17 @@ Page {
                 iconName: 'info'
                 text: i18n.tr('About')
                 onTriggered: pageStack.push(Qt.resolvedUrl('AboutPage.qml'))
-            },
-
-            Action {
-                iconName: 'save'
-                text: i18n.tr('Save Collection')
-                onTriggered: {
-                    if (dice_table.dice.length === 0) {
-                        PopupUtils.open(noDiceDialogComponent, root);
-                    }
-                    else {
-                        PopupUtils.open(collectionNameDialogComponent, root);
-                    }
-                }
             }
         ]
+    }
+
+    function popupSaveCollection() {
+        if (dice_table.dice.length === 0) {
+            PopupUtils.open(noDiceDialogComponent, root);
+        }
+        else {
+            PopupUtils.open(collectionNameDialogComponent, root);
+        }
     }
 
     function getDatabase() {
@@ -44,14 +40,14 @@ Page {
     }
 
     function loadCollections() {
-        mainPage.collections = [];
+        var collections = [];
 
         var db = getDatabase();
         db.transaction(function(tx) {
             var results = tx.executeSql('SELECT * FROM collection');
             for (var i = 0; i < results.rows.length; i++) {
                 try {
-                    mainPage.collections.push({
+                    collections.push({
                         name: results.rows.item(i).name,
                         dice: JSON.parse(results.rows.item(i).dice)
                     });
@@ -60,18 +56,20 @@ Page {
                     console.log('WARNING: skipping collection, probably has bad json data');
                 }
             }
+
+            mainPage.collections = collections;
         });
     }
 
     function loadCustomDice() {
-        mainPage.customDice = [];
+        var customDice = [];
 
         var db = getDatabase();
         db.transaction(function(tx) {
             var results = tx.executeSql('SELECT * FROM custom_die');
             for (var i = 0; i < results.rows.length; i++) {
                 try {
-                    mainPage.customDice.push({
+                    customDice.push({
                         name: results.rows.item(i).name,
                         values: JSON.parse(results.rows.item(i).sides)
                     });
@@ -80,15 +78,16 @@ Page {
                     console.log('WARNING: skipping custom die, probably has bad json data');
                 }
             }
+
+            mainPage.customDice = customDice;
         });
     }
 
-    //TODO make collection names and custom die names unique (have same names overwrite existing ones with the same name)
     Component.onCompleted: {
         var db = getDatabase();
         db.transaction(function(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS collection(name TEXT, dice TEXT)'); //This is bad usage of a sql database (storing json like this), but it simplifies things
-            tx.executeSql('CREATE TABLE IF NOT EXISTS custom_die(name TEXT, sides TEXT)'); //This is bad usage of a sql database (storing json like this), but it simplifies things
+            tx.executeSql('CREATE TABLE IF NOT EXISTS custom_die(name TEXT, sides TEXT)');
         });
 
         loadCollections();
@@ -113,8 +112,9 @@ Page {
             }
             else {
                 tx.executeSql('INSERT INTO collection VALUES(?, ?)', [name, JSON.stringify(dice)]);
-                mainPage.collections.push({name: name, dice: dice});
             }
+
+            loadCollections();
         });
     }
 
@@ -137,8 +137,9 @@ Page {
             }
             else {
                 tx.executeSql('INSERT INTO custom_die VALUES(?, ?)', [name, JSON.stringify(values)]);
-                mainPage.customDice.push({name: name, values: values});
             }
+
+            loadCustomDice();
         });
     }
 
@@ -165,11 +166,6 @@ Page {
                 dice_table.clear();
                 dice_table.add_multiple(dice);
             }
-
-            onCollectionRemoved: removeCollection(name)
-
-            onCreateCustomDie: PopupUtils.open(customDieDialogComponent, root);
-            onCustomDieRemoved: removeCustomDie(name)
         }
     }
 
@@ -287,6 +283,51 @@ Page {
                     anchors.fill: parent
                     onClicked: dice_table.roll()
                 }
+            }
+        }
+    }
+
+    BottomEdge {
+        id: bottomEdge
+        height: parent.height
+
+        contentComponent: DiceBottomEdge {
+            id: bottomEdgeComponent
+
+            collections: mainPage.collections
+            customDice: mainPage.customDice
+
+            onDeleteCustomDie: {
+                removeCustomDie(name);
+                bottomEdge.collapse();
+            }
+            onEditCustomDie: {
+                PopupUtils.open(customDieDialogComponent, root, {
+                    name: name,
+                    values: values,
+                })
+                bottomEdge.collapse();
+            }
+            onCreateCustomDie: {
+                PopupUtils.open(customDieDialogComponent, root)
+                bottomEdge.collapse();
+            }
+            onAddDie: {
+                dice_table.add(num, values)
+                bottomEdge.collapse();
+            }
+            onDeleteCollection: {
+                removeCollection(name)
+                bottomEdge.collapse();
+            }
+            onAddCollection: {
+                dice_table.clear();
+                dice_table.add_multiple(dice);
+                bottomEdge.collapse();
+            }
+            onCreateCollection: {
+                popupSaveCollection()
+                bottomEdge.collapse();
             }
         }
     }

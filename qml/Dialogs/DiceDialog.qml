@@ -12,9 +12,6 @@ Dialog {
     property var customDice: []
     signal diePicked(int num, var values)
     signal collectionPicked(var dice)
-    signal collectionRemoved(string name)
-    signal createCustomDie()
-    signal customDieRemoved(string name)
 
     Flickable {
         height: units.gu(50)
@@ -203,6 +200,7 @@ Dialog {
                 columnSpacing: units.gu(1)
                 rowSpacing: units.gu(1)
                 columns: 3
+                visible: customDice.length > 0
 
                 Repeater {
                     model: customDice
@@ -219,46 +217,22 @@ Dialog {
                             diePicked(modelData.values.length, modelData.values);
                             PopupUtils.close(dicePopup);
                         }
-
-                        onPressAndHold: {
-                            PopupUtils.close(dicePopup);
-                            customDieRemoved(modelData.name);
-                        }
                     }
                 }
+            }
 
-                Item {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: units.gu(7)
-
-                    Icon {
-                        name: 'add'
-                        anchors.fill: parent
-                        anchors.margins: units.gu(1)
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                createCustomDie();
-                                PopupUtils.close(dicePopup);
-                            }
-                        }
-                    }
-                }
+            Label {
+                Layout.fillWidth: true
+                text: i18n.tr('No custom dice available,\ncreate some by swiping up from the bottom')
+                visible: customDice.length === 0
+                horizontalAlignment: Label.AlignHCenter
+                textSize: Label.Small
             }
 
             Label {
                 Layout.fillWidth: true
                 text: i18n.tr('Pick a collection')
                 font.bold: true
-                horizontalAlignment: Label.AlignHCenter
-            }
-
-            Label {
-                Layout.fillWidth: true
-                text: i18n.tr('(Tap and hold to delete a collection)')
-                visible: collections.length > 0
-                textSize: Label.XSmall
                 horizontalAlignment: Label.AlignHCenter
             }
 
@@ -275,21 +249,16 @@ Dialog {
                             collectionPicked(modelData.dice);
                             PopupUtils.close(dicePopup);
                         }
-
-                        onPressAndHold: {
-                            PopupUtils.close(dicePopup);
-                            collectionRemoved(modelData.name);
-                        }
                     }
                 }
             }
 
             Label {
                 Layout.fillWidth: true
-                Layout.preferredHeight: units.gu(3)
-                text: i18n.tr('No custom collections available')
+                text: i18n.tr('No collections available,\ncreate one by swiping up from the bottom')
                 visible: collections.length === 0
                 horizontalAlignment: Label.AlignHCenter
+                textSize: Label.Small
             }
         }
     }
