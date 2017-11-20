@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dice-roller\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-19 14:50+0000\n"
+"POT-Creation-Date: 2017-11-20 03:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: ../qml/Components/DiceBottomEdge.qml:22
+#: ../qml/Components/DiceBottomEdge.qml:22 ../qml/MainPage.qml:294
 msgid "Collections & Custom Dice"
 msgstr ""
 

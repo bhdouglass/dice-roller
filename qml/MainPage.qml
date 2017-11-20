@@ -291,6 +291,9 @@ Page {
         id: bottomEdge
         height: parent.height
 
+        hint.text: i18n.tr('Collections & Custom Dice')
+        hint.iconName: 'settings'
+
         contentComponent: DiceBottomEdge {
             id: bottomEdgeComponent
 
