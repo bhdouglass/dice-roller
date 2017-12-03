@@ -1,36 +1,204 @@
-# French translation for dice-roller
-# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
-# This file is distributed under the same license as the dice-roller package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: dice-roller\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-03-15 11:46+1300\n"
-"PO-Revision-Date: 2016-03-18 15:57+0000\n"
-"Last-Translator: Jean-Marc <Unknown>\n"
-"Language-Team: French <fr@li.org>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-20 14:25+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-06-18 06:07+0000\n"
-"X-Generator: Launchpad (build 18097)\n"
 
-#. TRANSLATORS: Title of application
-#: main.qml:25 dice-roller.desktop.in.h:1
+#: ../qml/AboutPage.qml:8 ../qml/MainPage.qml:23
+msgid "About"
+msgstr "À propos"
+
+#: ../qml/AboutPage.qml:33 ../qml/MainPage.qml:18 dice-roller.desktop.in.h:1
 msgid "Dice Roller"
-msgstr "Dice Roller"
+msgstr "Lanceur de dés"
 
-#. TRANSLATORS: Label showing the total of all the dice values
-#: main.qml:153
+#: ../qml/AboutPage.qml:54
+msgid "A fork of the original Dice Roller app by Robert Ancell"
+msgstr "Une adaptation de l'application Lanceur de dés initialement créée par Robert Ancell"
+
+#: ../qml/AboutPage.qml:62
+msgid "Awesome icons by Joan CiberSheep (based on icons from the noun project)"
+msgstr "Magnifiques icônes créée par Joan CiberSheep (basées sur les icônes du projet du même nom)"
+
+#: ../qml/AboutPage.qml:70
+msgid "Fork by Brian Douglass"
+msgstr "Adaptation de Brian Douglass"
+
+#: ../qml/AboutPage.qml:78
+msgid "This app is open source software under the GPL v3."
+msgstr "Cette application est un logiciel libre distribué sous la license GPL v3."
+
+#: ../qml/AboutPage.qml:86
+msgid "Website"
+msgstr "Site Internet"
+
+#: ../qml/Components/DiceBottomEdge.qml:22 ../qml/MainPage.qml:294
+msgid "Collections & Custom Dice"
+msgstr "Collections & Dés personnalisés"
+
+#: ../qml/Components/DiceBottomEdge.qml:47
+msgid "Custom Dice"
+msgstr "Dé personnalisé"
+
+#: ../qml/Components/DiceBottomEdge.qml:91
+#: ../qml/Components/DiceBottomEdge.qml:169
+msgid "Delete"
+msgstr "Supprimer"
+
+#: ../qml/Components/DiceBottomEdge.qml:101
+msgid "Edit"
+msgstr "Modifier"
+
+#: ../qml/Components/DiceBottomEdge.qml:106
+#: ../qml/Components/DiceBottomEdge.qml:179
+msgid "Add"
+msgstr "Ajouter"
+
+#: ../qml/Components/DiceBottomEdge.qml:138
+#: ../qml/Dialogs/CustomDieDialog.qml:35
+msgid "Create a custom die"
+msgstr "Créer un dé personnalisé"
+
+#: ../qml/Components/DiceBottomEdge.qml:145
+msgid "Dice Collections"
+msgstr "Collections de dés"
+
+#: ../qml/Components/DiceBottomEdge.qml:211
+msgid "Create a collection"
+msgstr "Créer une collection"
+
+#: ../qml/Dialogs/DiceDialog.qml:33
+msgid "Pick a new die"
+msgstr "Sélectionner un nouveau dé"
+
+#: ../qml/Dialogs/DiceDialog.qml:47
+msgid "coin"
+msgstr "pièce"
+
+#: ../qml/Dialogs/DiceDialog.qml:61
+msgid "d4"
+msgstr "d4"
+
+#: ../qml/Dialogs/DiceDialog.qml:75
+msgid "d6"
+msgstr "d6"
+
+#: ../qml/Dialogs/DiceDialog.qml:89
+msgid "d8"
+msgstr "d8"
+
+#: ../qml/Dialogs/DiceDialog.qml:103
+msgid "d12"
+msgstr "d12"
+
+#: ../qml/Dialogs/DiceDialog.qml:117
+msgid "d20"
+msgstr "d20"
+
+#: ../qml/Dialogs/DiceDialog.qml:131
+msgid "d10 (1-10)"
+msgstr "d10 (1-10)"
+
+#: ../qml/Dialogs/DiceDialog.qml:145
+msgid "d10 (0-9)"
+msgstr "d10 (0-9)"
+
+#: ../qml/Dialogs/DiceDialog.qml:159
+msgid "d10 (00-90)"
+msgstr "d10 (00-90)"
+
+#: ../qml/Dialogs/DiceDialog.qml:179
+msgid "d100"
+msgstr "d100"
+
+#: ../qml/Dialogs/DiceDialog.qml:193
+msgid "Pick a custom die"
+msgstr "Sélectionner un dé personnalisé"
+
+#: ../qml/Dialogs/DiceDialog.qml:226
+msgid ""
+"No custom dice available,\n"
+"create some by swiping up from the bottom"
+msgstr ""
+"Aucun dé personnalisé n'est disponible,\n"
+"créez-en un en faisant glisser votre doigt à partir du bord inférieur de l'écran"
+
+#: ../qml/Dialogs/DiceDialog.qml:234
+msgid "Pick a collection"
+msgstr "Sélectionner une collection"
+
+#: ../qml/Dialogs/DiceDialog.qml:258
+msgid ""
+"No collections available,\n"
+"create one by swiping up from the bottom"
+msgstr ""
+"Aucune collection n'est disponible,\n"
+"créez-en une en faisant glisser votre doigt à partir du bord inférieur de l'écran"
+
+#: ../qml/Dialogs/DiceDialog.qml:267
+#: ../qml/Dialogs/CollectionNameDialog.qml:40
+#: ../qml/Dialogs/CustomDieDialog.qml:70
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../qml/Dialogs/CollectionNameDialog.qml:14
+msgid "Choose a name for this collection of dice"
+msgstr "Choisissez un nom pour cette collection de dés"
+
+#: ../qml/Dialogs/CollectionNameDialog.qml:29
+#: ../qml/Dialogs/CustomDieDialog.qml:63
+msgid "Save"
+msgstr "Enregistrer"
+
+#: ../qml/Dialogs/SimpleDialog.qml:16
+msgid "Ok"
+msgstr "Valider"
+
+#: ../qml/Dialogs/CustomDieDialog.qml:40
+msgid "Name"
+msgstr "Nom"
+
+#: ../qml/Dialogs/CustomDieDialog.qml:50
+msgid "Enter side values separated by commas"
+msgstr "Saisissez les valeurs des faces, séparées par des virgules"
+
+#: ../qml/MainPage.qml:187
+msgid ""
+"There are no dice to save\n"
+"Try adding dice before saving to a collection"
+msgstr ""
+"Il n'y a aucun dé à enregistrer\n"
+"Essayez d'ajouter des dés avant de les enregistrer dans une collection"
+
+#: ../qml/MainPage.qml:196
+msgid "You custom die has been removed"
+msgstr "Votre dé personnalisé a été supprimé"
+
+#: ../qml/MainPage.qml:205
+msgid "You collection has been removed"
+msgstr "Votre collection a été supprimée"
+
+#: ../qml/MainPage.qml:242
 msgid "Total: %n"
-msgstr "Total : %n"
+msgstr "Total[nbsp]: %n"
 
 #: dice-roller.desktop.in.h:2
 msgid "Simulate rolling dice"
-msgstr "Simuler un jeu de dés"
+msgstr "Simuler un jet de dés"
 
 #: dice-roller.desktop.in.h:3
-msgid "d6,die,dice,roll,random"
-msgstr "d6,dé,dés,lancer,jeter,aléatoire"
+msgid "d4,d6,d8,d12,d20,d10,d100,die,dice,roll,random,chance,coin"
+msgstr "d4,d6,d8,d12,d20,d10,d100,dé,lancer,aléatoire,chance,pièce"
