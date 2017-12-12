@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: dice-roller\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-12 19:28+0100\n"
-"PO-Revision-Date: 2017-12-12 19:39+0100\n"
+"PO-Revision-Date: 2017-12-12 20:35+0100\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,21 +28,21 @@ msgstr "Llançador de daus"
 
 #: ../qml/AboutPage.qml:54
 msgid "A fork of the original Dice Roller app by Robert Ancell"
-msgstr "A partir de l'app original d'en Robert Ancell Dice Roller"
+msgstr "Creada a partir del «Dice Roller», l'app original d'en Robert Ancell"
 
 #: ../qml/AboutPage.qml:62
 msgid "Awesome icons by Joan CiberSheep (based on icons from the noun project)"
 msgstr ""
-"Meravelloses icones per Joan CiberSheep (basades en icones de the noun "
-"proejct)"
+"Amb meravelloses icones fetes per en Joan CiberSheep (basades en icones de "
+"«the noun project»)"
 
 #: ../qml/AboutPage.qml:70
 msgid "Fork by Brian Douglass"
-msgstr "Derivació per Brian Douglass"
+msgstr "App derivada per en Brian Douglass"
 
 #: ../qml/AboutPage.qml:78
 msgid "This app is open source software under the GPL v3."
-msgstr "Aquesta app és de codi ober sota llicència GPL v3."
+msgstr "Aquesta app és de codi obert, publicada sota llicència GPL v3."
 
 #: ../qml/AboutPage.qml:86
 msgid "Website"
@@ -54,7 +54,7 @@ msgstr "Col·lecions i daus personalitzats"
 
 #: ../qml/Components/DiceBottomEdge.qml:47
 msgid "Custom Dice"
-msgstr "Personalitza un dau"
+msgstr "Daus personalitzats"
 
 #: ../qml/Components/DiceBottomEdge.qml:91
 #: ../qml/Components/DiceBottomEdge.qml:169
@@ -183,7 +183,7 @@ msgid ""
 "Try adding dice before saving to a collection"
 msgstr ""
 "No hi ha cap dau desat\n"
-"Proveu de afegir-ne abans de desar la col·lecció"
+"Afegiu-n'hi abans de desar la col·lecció"
 
 #: ../qml/MainPage.qml:196
 msgid "You custom die has been removed"
