@@ -1,0 +1,205 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: dice-roller.bhdouglass\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-26 06:17+0000\n"
+"PO-Revision-Date: 2018-02-28 21:25+0100\n"
+"Last-Translator: advocatux <advocatux@airpost.net>\n"
+"Language-Team: UBports Spanish Team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../qml/AboutPage.qml:8 ../qml/MainPage.qml:23
+msgid "About"
+msgstr "Acerca de"
+
+#: ../qml/AboutPage.qml:33 ../qml/MainPage.qml:18 dice-roller.desktop.in.h:1
+msgid "Dice Roller"
+msgstr "Lanzador de dados"
+
+#: ../qml/AboutPage.qml:54
+msgid "A fork of the original Dice Roller app by Robert Ancell"
+msgstr "Un clon de la aplicación original Dice Roller de Rober Ancell "
+
+#: ../qml/AboutPage.qml:62
+msgid "Awesome icons by Joan CiberSheep (based on icons from the noun project)"
+msgstr "Impresionantes iconos de Joan CiberSheep (basados en los iconos del proyecto noun)"
+
+#: ../qml/AboutPage.qml:70
+msgid "Fork by Brian Douglass"
+msgstr "Clonado por Brian Douglass"
+
+#: ../qml/AboutPage.qml:78
+msgid "This app is open source software under the GPL v3."
+msgstr "Esta aplicación es un programa de código abierto bajo la GPL v3."
+
+#: ../qml/AboutPage.qml:86
+msgid "Website"
+msgstr "Sitio web"
+
+#: ../qml/Components/DiceBottomEdge.qml:22 ../qml/MainPage.qml:294
+msgid "Collections & Custom Dice"
+msgstr "Colecciones y dados personalizados"
+
+#: ../qml/Components/DiceBottomEdge.qml:47
+msgid "Custom Dice"
+msgstr "Dados personalizados"
+
+#: ../qml/Components/DiceBottomEdge.qml:91
+#: ../qml/Components/DiceBottomEdge.qml:169
+msgid "Delete"
+msgstr "Borrar"
+
+#: ../qml/Components/DiceBottomEdge.qml:101
+msgid "Edit"
+msgstr "Editar"
+
+#: ../qml/Components/DiceBottomEdge.qml:106
+#: ../qml/Components/DiceBottomEdge.qml:179
+msgid "Add"
+msgstr "Añadir"
+
+#: ../qml/Components/DiceBottomEdge.qml:138
+#: ../qml/Dialogs/CustomDieDialog.qml:35
+msgid "Create a custom die"
+msgstr "Crear un dado personalizado"
+
+#: ../qml/Components/DiceBottomEdge.qml:145
+msgid "Dice Collections"
+msgstr "Colecciones de dados"
+
+#: ../qml/Components/DiceBottomEdge.qml:211
+msgid "Create a collection"
+msgstr "Crear una colección"
+
+#: ../qml/Dialogs/DiceDialog.qml:33
+msgid "Pick a new die"
+msgstr "Elegir un nuevo dado"
+
+#: ../qml/Dialogs/DiceDialog.qml:47
+msgid "coin"
+msgstr "moneda"
+
+#: ../qml/Dialogs/DiceDialog.qml:61
+msgid "d4"
+msgstr "d4"
+
+#: ../qml/Dialogs/DiceDialog.qml:75
+msgid "d6"
+msgstr "d6"
+
+#: ../qml/Dialogs/DiceDialog.qml:89
+msgid "d8"
+msgstr "d8"
+
+#: ../qml/Dialogs/DiceDialog.qml:103
+msgid "d12"
+msgstr "d12"
+
+#: ../qml/Dialogs/DiceDialog.qml:117
+msgid "d20"
+msgstr "d20"
+
+#: ../qml/Dialogs/DiceDialog.qml:131
+msgid "d10 (1-10)"
+msgstr "d10 (1-10)"
+
+#: ../qml/Dialogs/DiceDialog.qml:145
+msgid "d10 (0-9)"
+msgstr "d10 (0-9)"
+
+#: ../qml/Dialogs/DiceDialog.qml:159
+msgid "d10 (00-90)"
+msgstr "d10 (00-90)"
+
+#: ../qml/Dialogs/DiceDialog.qml:179
+msgid "d100"
+msgstr "d100"
+
+#: ../qml/Dialogs/DiceDialog.qml:193
+msgid "Pick a custom die"
+msgstr "Elegir un dado personalizado"
+
+#: ../qml/Dialogs/DiceDialog.qml:226
+msgid ""
+"No custom dice available,\n"
+"create some by swiping up from the bottom"
+msgstr ""
+"Ningún dado personalizado disponible,\n"
+"cree alguno deslizando el dedo desde abajo hacia arriba"
+
+#: ../qml/Dialogs/DiceDialog.qml:234
+msgid "Pick a collection"
+msgstr "Elegir una colección"
+
+#: ../qml/Dialogs/DiceDialog.qml:258
+msgid ""
+"No collections available,\n"
+"create one by swiping up from the bottom"
+msgstr ""
+"Ninguna colección disponible,\n"
+"cree una deslizando el dedo desde abajo haciar arriba"
+
+#: ../qml/Dialogs/DiceDialog.qml:267
+#: ../qml/Dialogs/CollectionNameDialog.qml:40
+#: ../qml/Dialogs/CustomDieDialog.qml:70
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../qml/Dialogs/CollectionNameDialog.qml:14
+msgid "Choose a name for this collection of dice"
+msgstr "Elija un nombre para esta colección de dados"
+
+#: ../qml/Dialogs/CollectionNameDialog.qml:29
+#: ../qml/Dialogs/CustomDieDialog.qml:63
+msgid "Save"
+msgstr "Guardar"
+
+#: ../qml/Dialogs/SimpleDialog.qml:16
+msgid "Ok"
+msgstr "Vale"
+
+#: ../qml/Dialogs/CustomDieDialog.qml:40
+msgid "Name"
+msgstr "Nombre"
+
+#: ../qml/Dialogs/CustomDieDialog.qml:50
+msgid "Enter side values separated by commas"
+msgstr "Introduzca los valores laterales separados por comas"
+
+#: ../qml/MainPage.qml:187
+msgid ""
+"There are no dice to save\n"
+"Try adding dice before saving to a collection"
+msgstr ""
+"No hay dados que guardar\n"
+"Intente añadir dados antes de guardarlos en una colección"
+
+#: ../qml/MainPage.qml:196
+msgid "You custom die has been removed"
+msgstr "Su dado personalizado ha sido eliminado"
+
+#: ../qml/MainPage.qml:205
+msgid "You collection has been removed"
+msgstr "Su colección ha sido eliminada"
+
+#: ../qml/MainPage.qml:242
+msgid "Total: %n"
+msgstr "Total: %n"
+
+#: dice-roller.desktop.in.h:2
+msgid "Simulate rolling dice"
+msgstr "Simular lanzamiento de dados"
+
+#: dice-roller.desktop.in.h:3
+msgid "d4,d6,d8,d12,d20,d10,d100,die,dice,roll,random,chance,coin"
+msgstr "d4,d6,d8,d12,d20,d10,d100,dado,dados,lanzar,aleatorio,azar,moneda"
