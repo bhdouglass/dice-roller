@@ -14,6 +14,11 @@ A huge thank you to Joan CiberSheep for his icons for the app and dice
 
 Build and run using [clickable](https://github.com/bhdouglass/clickable).
 
+## Translations
+
+Translations are handled online via [Transifex](https://www.transifex.com/brian-douglass/dice-roller/).
+A huge thank you to all the translators!
+
 ## License
 
 Copyright (C) 2017 [Brian Douglass](http://bhdouglass.com/)

@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+
+[dice-roller.dice-roller-bhdouglass-pot]
+file_filter = po/<lang>.po
+minimum_perc = 0
+source_file = po/dice-roller.bhdouglass.pot
+source_lang = en
+type = PO
+

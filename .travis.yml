@@ -1,0 +1,28 @@
+sudo: required
+dist: trusty
+services:
+- docker
+cache:
+  directories:
+    - "/var/cache/apt/archives"
+install:
+  - sudo add-apt-repository ppa:bhdouglass/clickable -y
+  - sudo apt-get update
+  - sudo apt-get install clickable
+  - clickable setup-docker
+  - sudo pip install transifex-client
+script:
+  - clickable clean build click-build
+after_success:
+  - sudo echo $'[https://www.transifex.com]\nhostname = https://www.transifex.com\nusername = api\npassword = '"$TRANSIFEX_PASSWORD"' > ~/.transifexrc
+  - tx push -s
+deploy:
+  provider: releases
+  api_key:
+    secure: ZrtLfHj9Mwoud/NlB9oNPWe5RqERDaEGRotr1ENQUaUqkSyj/V37bPOy09iP0Iq7sDYmXrNWDLUiHs80dvM39UP+NWRR/hst/VSX8bmyRfaipV4IttKDU9gHCpoeloppYvy2hPze3WQtpJFbcs8Gg2L7TkZErsSrODwu/OKazFnUY4u+EJmnLeHGDnl4LT86hT1N+ZBLhexjT8Uno5PVU819uUuqJ7f/MvMLZfQyfJCZzAhUBfc0tp0wGs1sU7P/IRgpxIvSUBLkcwTVtIyhDCopLhHTfaULqqqRLCqd25Ah1OKbL4CILtgvEAgw1NgLDr9zNEoCvFArLtT24tNULDL0KNSn8V+TAToiJ1w5hroIb/7MqY3jhABe1IDoWRfi8Y1WUhNEcb3WIzqMDcZS7t5AiiWUm8L+lAkZYFeqhxZEQbvqM9UENrABA5HyfkY40lDMC+KC68uE3dTylk2htxYQtRwkfpxfqbLHAJs9omFUbYSzDkWuZmLbbjgonyYm+g/ecNOyMBIFUT/cibJuCvqjdfZOzjbREAt3oNFNc7T4VIEhIoeNZWYYFedYEOpR9TYZ4meG5+8BlZoQwTJBUkJoi7sN56h0NsOrAaC1LsKL6ZKszW6XktTvkZKKjH9Lv4bwLOQ9N9Xu4m+alUv/JO4AwihA3lfccrErwgEOyto=
+  file: build/*.click
+  on:
+    repo: bhdouglass/dice-roller
+  skip_cleanup: true
+  on:
+    tags: true
