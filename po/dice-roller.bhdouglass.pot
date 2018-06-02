@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the dice-roller.bhdouglass package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dice-roller.bhdouglass\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-26 06:17+0000\n"
+"POT-Creation-Date: 2018-05-27 05:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -144,8 +144,7 @@ msgid ""
 "create one by swiping up from the bottom"
 msgstr ""
 
-#: ../qml/Dialogs/DiceDialog.qml:267
-#: ../qml/Dialogs/CollectionNameDialog.qml:40
+#: ../qml/Dialogs/DiceDialog.qml:267 ../qml/Dialogs/CollectionNameDialog.qml:40
 #: ../qml/Dialogs/CustomDieDialog.qml:70
 msgid "Cancel"
 msgstr ""
